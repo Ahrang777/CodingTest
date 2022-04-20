@@ -39,6 +39,8 @@ public class Ex3_4 {
             n/=k;
         }
 
+        cnt += (n - 1);
+
         System.out.println(cnt);
         long end = System.currentTimeMillis();
 
