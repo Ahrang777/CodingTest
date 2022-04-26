@@ -18,6 +18,8 @@ public class Ex10 {
     public static int n, m;
     public static int[][] graph = new int[1000][1000];
 
+    //배열 형태로 입력받았기에 매개변수 x, y입력
+    //연결 상태로 입력받았다면 매개변수 start 하나면 충분
     public static boolean dfs(int x, int y) {
         // 주어진 범위를 벗어나는 경우에는 즉시 종료
         if (x <= -1 || x >= n || y <= -1 || y >= m) {
