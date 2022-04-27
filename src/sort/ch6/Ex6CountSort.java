@@ -15,7 +15,7 @@ public class Ex6CountSort {
         }
 
         for (int i = 0; i <= MAX_VALUE; i++) {
-            for (int j = 0; j < cnt[j]; j++) {
+            for (int j = 0; j < cnt[i]; j++) {
                 System.out.print(i + " ");
             }
         }
