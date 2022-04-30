@@ -36,7 +36,7 @@ public class Ex8 {
             long total = 0;
             int mid = (start + end) / 2;
             for (int i = 0; i < n; i++) {
-                if(arr[i] > mid) total += (arr[i] - mid);
+                if(arr[i] > mid) total += arr[i] - mid;
             }
 
             if (total < m) {
