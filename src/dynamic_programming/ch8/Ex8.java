@@ -47,7 +47,7 @@ public class Ex8 {
 
         // 다이나믹 프로그래밍(Dynamic Programming) 진행(보텀업)
         d[0] = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {   //m으로 돌릴경우 m-arr[] 이런식으로 하게되면 생각할게 많아짐 >> 잘못하면 [0 - 2] 이런식으로 이상해짐
             for (int j = arr[i]; j <= m; j++) {
                 // (i - k)원을 만드는 방법이 존재하는 경우
                 if (d[j - arr[i]] != 10001) {
