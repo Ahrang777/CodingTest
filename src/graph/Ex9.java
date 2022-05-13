@@ -78,9 +78,11 @@ public class Ex9 {
 
         for (int i = 1; i <= n; i++) {
             StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
+            //해당 강의 시간
             int x = Integer.parseInt(stk.nextToken());
             times[i] = x;
             while (true) {
+                //선수과목 or 끝 표시
                 x = Integer.parseInt(stk.nextToken());
                 if (x == -1) {
                     break;
