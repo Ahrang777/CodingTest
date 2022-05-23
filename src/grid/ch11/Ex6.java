@@ -30,7 +30,8 @@ public class Ex6 {
 
         @Override
         public int compareTo(Food other){
-            return Integer.compare(this.time, other.time);
+            return this.time - other.time;
+            //return Integer.compare(this.time, other.time);
         }
     }
 
@@ -78,6 +79,70 @@ public class Ex6 {
             return result.get((int) ((k-sum)%length)).getIndex();
         }
     }
+
+    /*
+    //효율성 테스트에서 1개 막힘
+    static class Solution {
+        
+        Comparator<Food> comIdx = new Comparator<Food>() {
+            @Override
+            public int compare(Food o1, Food o2) {
+                return o1.getIndex() - o2.getIndex();
+            }
+        };
+        
+        public int solution(int[] food_times, long k) {
+            ArrayList<Food> foods = new ArrayList<>();
+            int length = food_times.length;
+
+            for (int i = 0; i < length; i++) {
+                foods.add(new Food(food_times[i], i + 1));
+            }
+
+            Collections.sort(foods);
+
+            //이전에 완전히 다 먹은 음식의 시간
+            int prev = 0;
+            int idx = 0;
+            for (Food food : foods) {
+                int diff = food.getTime() - prev;
+                if (diff != 0) {
+                    long spend = diff * length;
+                    if (spend <= k) {   //한 음식 다 먹음
+                        k -= spend;
+                        prev = food.getTime();
+                    } else {
+                        k %= length;    //한바퀴 묶음으로 돌리고 나머지로 몇번째인지
+
+
+                        ArrayList<Food> result = new ArrayList<>(foods.subList(idx, food_times.length));
+                        result.sort(new Comparator<Food>() {
+                            @Override
+                            public int compare(Food o1, Food o2) {
+                                return o1.getIndex() - o2.getIndex();
+                            }
+                        });
+
+                        return result.get((int) k).getIndex();
+
+                        *//*foods.subList(idx, food_times.length).sort(new Comparator<Food>() {
+                            @Override
+                            public int compare(Food o1, Food o2) {
+                                return o1.getIndex() - o2.getIndex();
+                            }
+                        });
+
+                        return foods.get(idx + (int) k).getIndex();*//*
+                    }
+                }
+
+                length--;
+                idx++;
+            }
+
+            return -1;
+        }
+    }*/
 
     public static void main(String[] args) {
         int[] food_times = {3, 1, 2};
