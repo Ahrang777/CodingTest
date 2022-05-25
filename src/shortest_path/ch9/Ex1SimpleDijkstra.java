@@ -71,8 +71,8 @@ public class Ex1SimpleDijkstra {
             d[graph[start].get(i).getIndex()] = graph[start].get(i).getDistance();
         }
 
-        //가장 작은거 뽑고, 갱신하고 한 세트 
-        //처음에 start를 가장 작은걸로 뽑고 갱신했기에 n-1번 반복
+        //가장 작은거 뽑고, 갱신하고 한 세트
+        //노드는 1 ~ n
         for (int i = 0; i < n - 1; i++) {
             int now = getSmallestNode();
             visited[now] = true;
@@ -90,6 +90,7 @@ public class Ex1SimpleDijkstra {
     public static int getSmallestNode(){
         int minValue = INF;
         int index = 0;
+        //노드는 1 ~ n
         for (int i = 1; i <= n; i++) {
             if (d[i] < minValue && !visited[i]) {
                 minValue = d[i];

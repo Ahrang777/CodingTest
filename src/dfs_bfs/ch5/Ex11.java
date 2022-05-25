@@ -19,7 +19,7 @@ import java.util.StringTokenizer;
 출력
 10
  */
-public class Ex11 {
+public class Ex11<ArrayList> {
 
     static class Node{
         private int x, y;
@@ -37,6 +37,7 @@ public class Ex11 {
             return y;
         }
     }
+
 
     public static int n, m;
     public static int[][] graph = new int[201][201];

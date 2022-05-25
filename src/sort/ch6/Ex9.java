@@ -1,8 +1,6 @@
 package sort.ch6;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Ex9 {
 
@@ -26,12 +24,21 @@ public class Ex9 {
 
         @Override
         public int compareTo(Fruit other) {
-            if(this.score < other.score){
+            /*if(this.score < other.score){
                 return -1;
             }
-            return 1;
+            return 1;*/
+
+            return (Integer.compare(this.score, other.score));
         }
     }
+
+    /*public static Comparator<Fruit> score = new Comparator<Fruit>() {
+        @Override
+        public int compare(Fruit o1, Fruit o2) {
+            return Integer.compare(o1.score, o2.score);
+        }
+    };*/
 
     public static void main(String[] args) {
         List<Fruit> fruits = new ArrayList<>();
