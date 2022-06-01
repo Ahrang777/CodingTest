@@ -119,11 +119,11 @@ public class Dijkstra {
             //최소라고 뽑은것보다 기존의 최소거리 테이블의 값이 더 작다면 이미 최소값으로 확정된것
             if(d[now] < distance) continue;
 
-            for (Node n : graph[now]) {
-                int cost = d[now] + n.getDistance();
-                if (cost < d[n.getIndex()]) {
-                    d[n.getIndex()] = cost;
-                    pq.offer(n);
+            for (Node next : graph[now]) {
+                int cost = d[now] + next.getDistance();
+                if (cost < d[next.getIndex()]) {
+                    d[next.getIndex()] = cost;
+                    pq.offer(next);
                 }
             }
         }

@@ -33,6 +33,8 @@ public class Permutation {
 
     //2. DFS를 이용해 구현  - 순서를 지키면서 n 개중에서 r 개를 뽑는 경우
     //output: 출력용 배열
+    //순열은 1,2,3 과 3,2,1 은 다른거라서 크기적으로 작은것도 확인해봐야한다. 따라서 0 ~ n까지 즉, 처음부터 끝까지 방문 안한거 다 찾는것
+    //1,2,3 과 3,2,1은 다른거라서 단순히 앞에서부터 순서대로 방문한 것들 뽑는걸로 해결 안된다. 별도로 출력을 위한 배열이 필요하다.
     public static void permutation2(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
         if (depth == r) {
             print(output, r);
@@ -56,6 +58,58 @@ public class Permutation {
         System.out.println();
     }
 
+
+    public static int[] dfsArr = {3, 6, 9};
+    public static boolean[] dfsVisited = new boolean[3];
+    public static int[] answer = new int[2];
+
+
+    //중복 순열
+    public static void dfs(int count) {
+        if (count == 2) {
+            dfsPrint();
+            return;
+        }
+        for (int i = 0; i < 3; i++) {
+            answer[count] = dfsArr[i];
+            dfs(count + 1);
+        }
+    }
+
+    public static void dfsPrint() {
+        for (int i = 0; i < 2; i++) {
+            System.out.print(answer[i] + " ");
+        }
+        System.out.println();
+    }
+
+    /*public static final int MAX = 5;
+    public static int[] dfsArr = new int[MAX];
+    public static boolean[] dfsVisited = new boolean[MAX];
+    public static int[] answer = new int[3];    //3: nPr의 r 과 같다
+
+    public static void dfs(int count) {
+        if (count == 3) {
+            dfsPrint();
+            return;
+        }
+        for (int i = 0; i < MAX; i++) {
+            if (!dfsVisited[i]) {
+                dfsVisited[i] = true;
+                answer[count] = dfsArr[i];
+                dfs(count + 1);
+                dfsVisited[i] = false;
+            }
+        }
+    }
+
+    public static void dfsPrint() {
+        for (int i = 0; i < MAX; i++) {
+            System.out.print(answer[i] + " ");
+        }
+        System.out.println();
+    }*/
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3};
         int n = arr.length;
@@ -68,5 +122,8 @@ public class Permutation {
 
         System.out.println("-------- 2. DFS ---------");
         permutation2(arr, output, visited, 0, n, 3);
+
+        System.out.println("-------- 2. DFS 중복순열 ---------");
+        dfs(0);
     }
 }

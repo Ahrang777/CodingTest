@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-/**
- * 입력
- * 4
- * 1 3 1 5
- * 
- * 출력
- * 8
- */
+/*
+입력
+4
+1 3 1 5
+
+출력
+8
+*/
 public class Ex6 {
 
     public static int[] d = new int[100];

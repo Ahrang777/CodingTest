@@ -18,6 +18,7 @@ public class BinarySearch {
 
     //target의 인덱스 찾기
     //start: 시작 인덱스, end: 끝 인덱스, target: 찾는 값
+    //이진탐색 재귀로 해결
     public static int binarySearch(int[] arr, int target, int start, int end) {
         if (start > end) {
             return -1;
@@ -34,6 +35,7 @@ public class BinarySearch {
         }
     }
 
+    //이진탐색 반복문으로 해결
     public static int binarySearch1(int[] arr, int target, int start, int end) {
         while (start <= end) {
             int mid = (start + end) / 2;

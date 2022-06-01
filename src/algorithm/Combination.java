@@ -157,6 +157,38 @@ public class Combination {
         }
     }*/
 
+    public static int[] dfsArr = {1, 2, 3, 4, 5};
+    public static boolean[] dfsVisited = new boolean[5];
+
+    public static void dfsPrint() {
+        for (int i = 0; i < 5; i++) {
+            if (dfsVisited[i] == true) {
+                System.out.print(dfsArr[i] + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    //5C3
+    //DFS 이용한 조합, DFS + 백트래킹
+    //index : 시작 지점, count : nCr에서 r만큼 뽑기위해 세는 용도
+    //조합은 순서x, 이전을 볼 필요 없이 그 이후만 보면 되기에 시작점 지정하기 위한 index >> for index 부터 나머지 확인
+    //조합은 1,2,3 과 3,2,1 은 같은거라서 앞에서 부터 순서대로 방문한 것들만 뽑으면 된다. 별도의 출력용 배열 필요없이 기존의 배열과 방문확인용 배열 만으로 해결된다.
+    public static void dfs(int index, int count) {
+        if (count == 3) {
+            dfsPrint();
+            return;
+        }
+
+        for (int i = index; i < 5; i++) {
+            if (!dfsVisited[i]) {
+                dfsVisited[i] = true;
+                dfs(i + 1, count + 1);
+                dfsVisited[i] = false;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("-------- 0. 조합 경우의 수 ---------");
         System.out.println(combination(3, 2));
@@ -191,5 +223,8 @@ public class Combination {
         //0 ~ n-1
         System.out.println("---------- 3. visited 없이 index로 해결 ----------");
         comb3(arr3, 0, 3, 2, 0);
+
+        System.out.println("---------- 4. DFS 와 백트래킹 이용 ----------");
+        dfs(0, 0);
     }
 }
