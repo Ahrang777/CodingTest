@@ -2,6 +2,14 @@ package dfs_bfs.ch13;
 
 import java.util.*;
 
+/*
+출력
+7
+ */
+
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/60063
+ */
 public class Ex8 {
 
     static class Node{
@@ -67,6 +75,7 @@ public class Ex8 {
             for (int i = 0; i < 2; i++) { // 위쪽으로 회전하거나, 아래쪽으로 회전
                 // 위쪽 혹은 아래쪽 두 칸이 모두 비어 있다면
                 if (board[pos.getX1() + hor[i]][pos.getY1()] == 0 && board[pos.getX2() + hor[i]][pos.getY2()] == 0) {
+                    // 각 지점을 축으로 도는 경우 각각 추가 >> x1,y1 을 축으로 도는 경우, x2, y2를 축으로 도는 경우 >> 2가지
                     nextPos.add(new Node(pos.getX1(), pos.getY1(), pos.getX1() + hor[i], pos.getY1(), pos.getDistance() + 1));
                     nextPos.add(new Node(pos.getX2(), pos.getY2(), pos.getX2() + hor[i], pos.getY2(), pos.getDistance() + 1));
                 }
@@ -122,6 +131,7 @@ public class Ex8 {
             }
 
             // 현재 위치에서 이동할 수 있는 위치 확인
+            // pos: 현재위치
             ArrayList<Node> nextPos = getNextPos(pos, newBoard);
             for (Node next : nextPos) {
                 // 아직 방문하지 않은 위치라면 큐에 삽입하고 방문 처리
