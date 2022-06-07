@@ -3,6 +3,22 @@ package sort.ch14;
 import java.util.*;
 import java.io.*;
 
+/*
+입력
+3
+10
+20
+40
+
+출력
+100
+ */
+
+/**
+ * https://www.acmicpc.net/problem/1715
+ * 
+ * 카드 정렬하기
+ */
 public class Ex4 {
 
     public static void main(String[] args) throws IOException {

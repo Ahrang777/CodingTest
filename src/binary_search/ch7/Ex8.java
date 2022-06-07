@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-/**
- * 입력
- * 4 6
- * 19 15 10 17
- * 
- * 출력
- * 15
- */
+/*
+입력
+4 6
+19 15 10 17
+
+출력
+15
+*/
 public class Ex8 {
 
     public static void main(String[] args) throws IOException {
@@ -30,8 +30,8 @@ public class Ex8 {
 
         int start = 0;
         int end = (int)1e9;
-
         int result = 0;
+
         while (start <= end) {
             long total = 0;
             int mid = (start + end) / 2;

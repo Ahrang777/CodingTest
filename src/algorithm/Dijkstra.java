@@ -123,7 +123,7 @@ public class Dijkstra {
                 int cost = d[now] + next.getDistance();
                 if (cost < d[next.getIndex()]) {
                     d[next.getIndex()] = cost;
-                    pq.offer(next);
+                    pq.offer(new Node(next.getIndex(), cost));
                 }
             }
         }
