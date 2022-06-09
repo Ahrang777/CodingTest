@@ -229,6 +229,7 @@ public class Ex4 {
             String q = queries[i];
             int res = 0;
             if (q.charAt(0) != '?') { // 접미사에 와일드 카드가 붙은 경우
+                // ? 는 a ~ z 이므로 ??? 는 aaa ~ zzz 이다. 가장 왼쪽인 aaa, 가장 오른쪽인 zzz 사이의 모든 값들의 숫자를 센다.
                 res = countByRange(arr.get(q.length()), q.replaceAll("\\?", "a"), q.replaceAll("\\?", "z"));
             }
             else { // 접두사에 와일드 카드가 붙은 경우

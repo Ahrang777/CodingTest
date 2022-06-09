@@ -8,9 +8,9 @@ import java.util.StringTokenizer;
 
 /**
  * 입력
- * 2 15
- * 2
- * 3
+2 15
+2
+3
  * 
  * 출력
  * 5
@@ -18,10 +18,10 @@ import java.util.StringTokenizer;
  *
  *
  * 입력
- * 3 4
- * 3
- * 5
- * 7
+3 4
+3
+5
+7
  *
  * 출력
  * -1

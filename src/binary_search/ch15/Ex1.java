@@ -28,7 +28,7 @@ public class Ex1 {
     public static int lowerBound(int[] arr, int target, int start, int end) {
         while (start < end) {
             int mid = (start + end) / 2;
-            if(arr[mid] >= target) end = mid;
+            if(arr[mid] >= target) end = mid;   //target 과 같은 것 중 가장 왼쪽 값 찾기 >> 따라서 target이랑 같을때 왼쪽으로 이동하기 위해 end = mid
             else start = mid + 1;
         }
         return end;
@@ -38,7 +38,7 @@ public class Ex1 {
     public static int upperBound(int[] arr, int target, int start, int end) {
         while (start < end) {
             int mid = (start + end) / 2;
-            if (arr[mid] > target) end = mid;
+            if (arr[mid] > target) end = mid;   //target 과 같은 것 중 가장 오른쪽 값 찾기 >> 따라서 target이랑 같을때 오른쪽으로 이동하기 위해 start = mid + 1
             else start = mid + 1;
         }
         return end;
@@ -50,6 +50,25 @@ public class Ex1 {
         int rightIndex = upperBound(arr, rightValue, 0, arr.length);
         int leftIndex = lowerBound(arr, leftValue, 0, arr.length);
         return rightIndex - leftIndex;
+    }
+
+    public static int cnt = 0;
+    public static void binarySearch(int start, int end, int target, int[] arr) {
+        if(start > end) {
+            return;
+        }
+        int mid = (start + end) / 2;
+
+        if(arr[mid] == target) {
+            cnt++;
+            binarySearch(start, mid-1, target, arr );
+            binarySearch(mid+1, end, target, arr);
+        }
+        else if(arr[mid] > target) {
+            binarySearch(start, mid-1, target, arr );
+        }else {
+            binarySearch(mid+1, end, target, arr);
+        }
     }
 
     public static void main(String[] args) throws IOException {
