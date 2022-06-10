@@ -21,6 +21,7 @@ saturday
  */
 public class Ex6 {
 
+    //str1 -> str2
     static String str1;
     static String str2;
 
@@ -44,6 +45,7 @@ public class Ex6 {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 // 문자가 같다면, 왼쪽 위에 해당하는 수를 그대로 대입
+                // i, j가 1부터 시작하니까 -1
                 if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 }

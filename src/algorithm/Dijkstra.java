@@ -37,30 +37,6 @@ import java.util.StringTokenizer;
  * 최단 경로
  * 한 지점에서 다른 지점들로의 최단 경로
  */
-class Node implements Comparable<Node> {
-
-    private int index;
-    private int distance;
-
-    public Node(int index, int distance) {
-        this.index = index;
-        this.distance = distance;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    @Override
-    public int compareTo(Node o) {
-        return Integer.compare(this.distance, o.distance);
-    }
-}
-
 public class Dijkstra {
 
     public static int n, m, start;
@@ -102,6 +78,30 @@ public class Dijkstra {
             }
         }
         return index;
+    }
+
+    public static class Node implements Comparable<Node> {
+
+        private int index;
+        private int distance;
+
+        public Node(int index, int distance) {
+            this.index = index;
+            this.distance = distance;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public int getDistance() {
+            return distance;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return Integer.compare(this.distance, o.distance);
+        }
     }
 
     //O(ElogV), V: 노드 개수, E: 간선 개수
