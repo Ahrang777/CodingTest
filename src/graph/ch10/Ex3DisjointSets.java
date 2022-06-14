@@ -1,4 +1,4 @@
-package graph;
+package graph.ch10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,26 +6,26 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /*
-서로소 집합을 활용한 사이클 판별
+개선된 서로소 집합 알고리즘
 
 입력
-3 3
-1 2
-1 3
+6 4
+1 4
 2 3
+2 4
+5 6
 
 출력
-사이클이 발생했습니다.
+각 원소가 속한 집합: 1 1 1 1 5 5
+부모 테이블: 1 1 1 1 5 5
  */
-public class Ex4CycleDisjointSets {
+public class Ex3DisjointSets {
 
     public static int v, e;
     public static int[] parent = new int[100001];
 
     public static int findRoot(int x) {
-        if (parent[x] == x) {
-            return x;
-        }
+        if(x == parent[x]) return x;
         return parent[x] = findRoot(parent[x]);
     }
 
@@ -47,26 +47,24 @@ public class Ex4CycleDisjointSets {
             parent[i] = i;
         }
 
-        boolean cycle = false;
-
         for (int i = 0; i < e; i++) {
             stk = new StringTokenizer(bf.readLine(), " ");
             int a = Integer.parseInt(stk.nextToken());
             int b = Integer.parseInt(stk.nextToken());
-
-            if (findRoot(a) == findRoot(b)) {
-                cycle = true;
-                break;
-            } else {
-                union(a, b);
-            }
+            union(a, b);
         }
 
-        if (cycle) {
-            System.out.println("사이클이 발생했습니다.");
+        System.out.print("각 원소가 속한 집합: ");
+        for (int i = 1; i <= v; i++) {
+            System.out.print(findRoot(i) + " ");
         }
-        else {
-            System.out.println("사이클이 발생하지 않았습니다.");
+        System.out.println();
+
+        // 부모 테이블 내용 출력하기
+        System.out.print("부모 테이블: ");
+        for (int i = 1; i <= v; i++) {
+            System.out.print(parent[i] + " ");
         }
+        System.out.println();
     }
 }

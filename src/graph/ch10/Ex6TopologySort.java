@@ -1,4 +1,4 @@
-package graph;
+package graph.ch10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,6 +45,14 @@ public class Ex6TopologySort {
             // 큐에서 원소 꺼내기
             int now = q.poll();
             result.add(now);
+
+            /*for (int next : graph[now]) {
+                indegree[next] -= 1;
+                if (indegree[next] == 0) {
+                    q.offer(next);
+                }
+            }*/
+
             // 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
             for (int i = 0; i < graph[now].size(); i++) {
                 indegree[graph[now].get(i)] -= 1;

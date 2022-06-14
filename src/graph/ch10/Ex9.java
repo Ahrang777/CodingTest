@@ -1,4 +1,4 @@
-package graph;
+package graph.ch10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,6 +50,17 @@ public class Ex9 {
         while (!q.isEmpty()) {
             // 큐에서 원소 꺼내기
             int now = q.poll();
+
+            for (int next : graph[now]) {
+                result[next] = Math.max(result[next], result[now] + times[next]);
+                indegree[next] -= 1;
+
+                if (indegree[next] == 0) {
+                    q.offer(next);
+                }
+            }
+
+            /*
             // 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
             for (int i = 0; i < graph[now].size(); i++) {
                 result[graph[now].get(i)] = Math.max(result[graph[now].get(i)], result[now] + times[graph[now].get(i)]);
@@ -58,7 +69,7 @@ public class Ex9 {
                 if (indegree[graph[now].get(i)] == 0) {
                     q.offer(graph[now].get(i));
                 }
-            }
+            }*/
         }
 
         // 위상 정렬을 수행한 결과 출력

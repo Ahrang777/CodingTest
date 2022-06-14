@@ -89,6 +89,8 @@ public class Ex4 {
             int a = Integer.parseInt(stk.nextToken());
             int b = Integer.parseInt(stk.nextToken());
 
+            // 양방향 그래프
+            // 한번 이동할때마다 1칸 늘어남
             graph[a].add(new Node(b, 1));
             graph[b].add(new Node(a, 1));
         }

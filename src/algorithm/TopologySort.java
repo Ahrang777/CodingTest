@@ -8,6 +8,22 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+/*
+입력
+7 8
+1 2
+1 5
+2 3
+2 6
+3 4
+4 7
+5 6
+6 4
+
+출력
+1 2 5 3 6 4 7
+ */
+
 /**
  * 위상 정렬
  * 방향 그래프의 모든 노드를 방향성을 거스르지 않고 순서대로 나열

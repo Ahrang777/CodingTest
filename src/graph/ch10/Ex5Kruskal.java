@@ -1,4 +1,4 @@
-package graph;
+package graph.ch10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -95,6 +95,17 @@ public class Ex5Kruskal {
         }
 
         Collections.sort(edges);
+
+        /*for (Edge edge : edges) {
+            int a = edge.getNodeA();
+            int b = edge.getNodeB();
+            int cost = edge.getDistance();
+
+            if (findRoot(a) != findRoot(b)) {
+                result += cost;
+                union(a, b);
+            }
+        }*/
 
         for (int i = 0; i < edges.size(); i++) {
             int a = edges.get(i).getNodeA();

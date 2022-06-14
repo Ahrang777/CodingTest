@@ -1,4 +1,4 @@
-package graph;
+package graph.ch10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
