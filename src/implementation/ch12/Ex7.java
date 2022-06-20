@@ -42,6 +42,10 @@ import java.util.*;
  */
 
 /**
+ * https://www.acmicpc.net/problem/15686
+ *
+ * 치킨 배달
+ *
  * 풀이방법
  * 1. 조합
  * 2. DFS, 백트래킹
@@ -80,6 +84,22 @@ public class Ex7 {
             this.r = r;
             now = new int[r];
             result = new ArrayList<ArrayList<Position>>();
+        }
+
+        public void combination(ArrayList<Position> arr, int depth, int index, int target) {
+            if (depth == r) {
+                ArrayList<Position> temp = new ArrayList<>();
+                for (int i = 0; i < now.length; i++) {
+                    temp.add(arr.get(now[i]));
+                }
+                result.add(temp);
+                return;
+            }
+            if (target == n) return;
+            now[index] = target;
+            // 선택될 경우 r-1 대신 depth + 1 로 r은 그대로 유지 
+            combination(arr, depth + 1, index + 1, target + 1);
+            combination(arr, depth, index, target + 1);
         }
 
         public void combination(ArrayList<Position> arr, int index, int n, int r, int target) {
@@ -163,6 +183,7 @@ public class Ex7 {
     public static ArrayList<Position> house = new ArrayList<>();
 
 
+    // 도시의 치킨 거리
     public static int getSum(ArrayList<Position> candidates) {
         int result = 0;
         //모든 집에 대해서

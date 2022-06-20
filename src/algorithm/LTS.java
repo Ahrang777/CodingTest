@@ -7,6 +7,11 @@ import java.util.Arrays;
  * O(N²)
  *
  * 다이나믹 프로그래밍 이용한 LTS
+ *
+ * LIS(Longest Increasing subsequence)
+ * 가장 긴 증가하는 부분 수열
+ *
+ * 하나의 수열이 주어졌을 때 값들이 증가하는 형태의 가장 긴 부분 수열을 찾는 것
  */
 public class LTS {
 

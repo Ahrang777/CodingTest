@@ -115,6 +115,7 @@ public class Ex5 {
         int direction = 0;
         int time = 0;
 
+        //directions 에서 뽑아내기 위한 index 변수
         int index = 0;
 
         //Queue의 앞이 꼬리

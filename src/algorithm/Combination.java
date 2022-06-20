@@ -2,9 +2,65 @@ package algorithm;
 
 import implementation.ch12.Ex7;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
+/*
+-------- 0. 조합 경우의 수 ---------
+3
+
+-------- 1. 조합 경우의 수 ---------
+1192052400
+
+-------- 2. 백트래킹 ---------
+3개 중에 1개 뽑음
+1
+2
+3
+
+3개 중에 2개 뽑음
+1 2
+1 3
+2 3
+
+3개 중에 3개 뽑음
+1 2 3
+
+---------- 3. 재귀 ----------
+3개 중에 1개 뽑음
+1
+2
+3
+
+3개 중에 2개 뽑음
+1 2
+1 3
+2 3
+
+3개 중에 3개 뽑음
+1 2 3
+
+---------- 4. visited 없이 index로 해결 ----------
+0 1
+0 2
+1 2
+---------- 5. DFS 와 백트래킹 이용 ----------
+1 2 3
+1 2 4
+1 2 5
+1 3 4
+1 3 5
+1 4 5
+2 3 4
+2 3 5
+2 4 5
+3 4 5
+ */
+
 /**
+ * 조합
+ * O(2^n)
+ *
  * 5C2 = 5 x 4 / 2 x 1 = 5C3 = 5 x 4 x 3 / 3 x 2 x 1 = 10
  *
  * nCn = nC0 = 1
@@ -23,6 +79,23 @@ public class Combination {
         }
     }
 
+    // 값의 범위 때문에 BigInteger 사용
+    public static BigInteger[][] dp = new BigInteger[101][101];
+
+    // nCr >> 위와 같이 재귀로 할 경우 시간초과가 발생할 수 있다.
+    // 다이나믹 프로그래밍 이용
+    public static void dpCombination(int n, int r) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (j == i || j == 0) {
+                    dp[i][j] = BigInteger.ONE;
+                } else {
+                    dp[i][j] = dp[i - 1][j - 1].add(dp[i - 1][j]);
+                }
+            }
+        }
+    }
+
     //조합 묶음 구하기 : [1,2,3] >> (1,2) (1,3) (2,3)
     //백트래킹 방법
     //start 는 기준으로 start부터 쌍 확인, start 이전 내용은 다 체크한것으로 간주
@@ -31,8 +104,9 @@ public class Combination {
             print(arr, visited, n);
             return;
         } else {
-            //순서대로 자신 뽑는 경우 확인, 뽑지 않는 경우는 현재 i 보다 큰 나머지 들에서 확인됨
+            //순서대로 자신(i번째) 뽑는 경우 확인, 뽑지 않는 경우는 현재 i 보다 큰 나머지 들에서 확인됨
             for (int i = start; i < n; i++) {
+                // i번째를 뽑는 경우
                 visited[i] = true;
                 comb1(arr, visited, i + 1, n, r - 1);   //1,2 이런게 뽑히고 2, 1은 안된다. 배열 앞에서 부터 다 뽑는 경우 생각하며 가기에 뒤에 뽑히는건 무조건 앞에 뽑힌것보다 숫자가 커야 한다. 그래서 depth + 1이 아닌 i + 1
                 visited[i] = false;
@@ -181,17 +255,25 @@ public class Combination {
         }
 
         for (int i = index; i < 5; i++) {
-            if (!dfsVisited[i]) {
+            dfsVisited[i] = true;
+            dfs(i + 1, count + 1);
+            dfsVisited[i] = false;
+            /*if (!dfsVisited[i]) {
                 dfsVisited[i] = true;
                 dfs(i + 1, count + 1);
                 dfsVisited[i] = false;
-            }
+            }*/
         }
     }
 
     public static void main(String[] args) {
         System.out.println("-------- 0. 조합 경우의 수 ---------");
         System.out.println(combination(3, 2));
+        System.out.println();
+
+        System.out.println("-------- 1. 조합 경우의 수 ---------");
+        dpCombination(100, 6);
+        System.out.println(dp[100][6]);
         System.out.println();
 
         //조합 만들 배열
@@ -201,7 +283,7 @@ public class Combination {
 
         //nC1, nC2 ,,, nCn 각 쌍
         //백트래킹 이용해서 구현
-        System.out.println("-------- 1. 백트래킹 ---------");
+        System.out.println("-------- 2. 백트래킹 ---------");
         for (int r = 1; r <= arr.length; r++) {
             System.out.print(arr.length + "개 중에 " + r + "개 뽑음");
             System.out.println();
@@ -211,7 +293,7 @@ public class Combination {
 
         //nC1, nC2 ,,, nCn 각 쌍
         //재귀 이용해서 구현
-        System.out.println("---------- 2. 재귀 ----------");
+        System.out.println("---------- 3. 재귀 ----------");
         for (int r = 1; r <= arr.length; r++) {
             System.out.print(arr.length + "개 중에 " + r + "개 뽑음");
             System.out.println();
@@ -221,10 +303,12 @@ public class Combination {
 
         int[] arr3 = new int[3];
         //0 ~ n-1
-        System.out.println("---------- 3. visited 없이 index로 해결 ----------");
+        System.out.println("---------- 4. visited 없이 index로 해결 ----------");
         comb3(arr3, 0, 3, 2, 0);
 
-        System.out.println("---------- 4. DFS 와 백트래킹 이용 ----------");
+        System.out.println("---------- 5. DFS 와 백트래킹 이용 ----------");
         dfs(0, 0);
+
+
     }
 }

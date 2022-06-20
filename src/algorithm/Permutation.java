@@ -1,5 +1,32 @@
 package algorithm;
 
+/*
+-------- 1. Swap ---------
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 2 1
+3 1 2
+-------- 2. DFS ---------
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+-------- 2. DFS 중복순열 ---------
+3 3
+3 6
+3 9
+6 3
+6 6
+6 9
+9 3
+9 6
+9 9
+ */
+
 /**
  * Permutation, 순열
  * nPr
@@ -60,7 +87,7 @@ public class Permutation {
 
 
     public static int[] dfsArr = {3, 6, 9};
-    public static boolean[] dfsVisited = new boolean[3];
+//    public static boolean[] dfsVisited = new boolean[3];
     public static int[] answer = new int[2];
 
 
@@ -123,7 +150,7 @@ public class Permutation {
         System.out.println("-------- 2. DFS ---------");
         permutation2(arr, output, visited, 0, n, 3);
 
-        System.out.println("-------- 2. DFS 중복순열 ---------");
+        System.out.println("-------- 3. DFS 중복순열 ---------");
         dfs(0);
     }
 }

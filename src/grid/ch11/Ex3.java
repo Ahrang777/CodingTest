@@ -46,7 +46,27 @@ public class Ex3 {
         }
 
         System.out.println(Math.min(count0, count1));
-        
+
+        /*
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String str = bf.readLine();
+
+        int prev = str.charAt(0) - '0';
+        int cnt = 0;
+        for (int i = 1; i < str.length(); i++) {
+            int num = str.charAt(i) - '0';
+            if (prev != num) {
+                cnt += 1;
+            }
+        }
+
+        if (cnt == 0) {
+            System.out.println(cnt);
+        } else {
+            System.out.println(cnt - 1);
+        }
+         */
+
         /*for (int i = 0; i < s.length() -1 ; i++) {
             int now = s.charAt(i) - '0';
             int next = s.charAt(i + 1) - '0';

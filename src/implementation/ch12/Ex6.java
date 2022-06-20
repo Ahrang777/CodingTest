@@ -18,6 +18,12 @@ build_frame
 [500]
 [510]
  */
+
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/60061
+ * 
+ * 기둥과 보 설치
+ */
 public class Ex6 {
 
     static class Node implements Comparable<Node> {
@@ -44,14 +50,21 @@ public class Ex6 {
         }
 
         @Override
-        public int compareTo(Node o){
-            if(this.x == o.getX() && this.y == o.getY()){
+        public int compareTo(Node other){
+            if (this.x != other.x) {
+                return Integer.compare(this.x, other.x);
+            } else if (this.y != other.y) {
+                return Integer.compare(this.y, other.y);
+            }
+            return Integer.compare(this.a, other.a);
+
+            /*if(this.x == o.getX() && this.y == o.getY()){
                 return Integer.compare(this.a, o.getA());
             }
             if(this.x == o.getX()){
                 return Integer.compare(this.y, o.getY());
             }
-            return Integer.compare(this.x, o.getX());
+            return Integer.compare(this.x, o.getX());*/
         }
     }
 

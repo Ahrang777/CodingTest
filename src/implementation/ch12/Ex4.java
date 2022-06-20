@@ -1,11 +1,17 @@
 package implementation.ch12;
 
+/*
+key: [[0, 0, 0], [1, 0, 0], [0, 1, 1]]
+lock: [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
+
+출력
+result: true
+ */
+
 /**
- * key: [[0, 0, 0], [1, 0, 0], [0, 1, 1]]
- * lock: [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
+ * https://programmers.co.kr/learn/courses/30/lessons/60059
  * 
- * 출력
- * result: true
+ * 자물쇠와 열쇠
  */
 public class Ex4 {
 

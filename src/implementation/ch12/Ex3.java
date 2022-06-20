@@ -1,11 +1,17 @@
 package implementation.ch12;
 
+/*
+"aabbaccc"	7
+"ababcdcdababcdcd"	9
+"abcabcdede"	8
+"abcabcabcabcdededededede"	14
+"xababcdcdababcdcd"  17
+ */
+
 /**
- * "aabbaccc"	7
- * "ababcdcdababcdcd"	9
- * "abcabcdede"	8
- * "abcabcabcabcdededededede"	14
- * "xababcdcdababcdcd"  17
+ * https://programmers.co.kr/learn/courses/30/lessons/60057
+ * 
+ * 문자열 압축
  */
 public class Ex3 {
 
@@ -104,6 +110,7 @@ public class Ex3 {
         if (!postString.startsWith(preString)) {
             if(repeat == 1) return result += preString + getSplitedLength(postString, n, 1);
             return result += Integer.toString(repeat) + preString + getSplitedLength(postString, n, 1);
+//            return result += repeat + preString + getSplitedLength(postString, n, 1);
         }
 
         //중복o, 압축 진행중

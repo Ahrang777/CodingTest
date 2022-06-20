@@ -28,6 +28,7 @@ public class Ex5 {
     public static int n, m;
     //public static ArrayList<Integer> arr = new ArrayList<>();
 
+    //볼링공 무게마다의 개수
     public static int[] arr = new int[11];
 
     public static void main(String[] args) throws IOException {
