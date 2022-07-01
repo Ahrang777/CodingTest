@@ -1,6 +1,5 @@
 package algorithm;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Arrays;
  *
  * 하나의 수열이 주어졌을 때 값들이 증가하는 형태의 가장 긴 부분 수열을 찾는 것
  */
-public class LTS {
+public class LIS {
 
     public static void main(String[] args) {
         int[] arr = {10, 20, 10, 30, 20, 50};

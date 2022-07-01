@@ -115,11 +115,8 @@ public class Ex6 {
             for (int j = 1; j <= n; j++) {
                 if (map[i][j] == EMPTY) {
                     map[i][j] = WALL;
-//                    count++;
-//                    setWall(count);
                     setWall(count + 1);
                     map[i][j] = EMPTY;
-//                    count--;
                 }
             }
         }

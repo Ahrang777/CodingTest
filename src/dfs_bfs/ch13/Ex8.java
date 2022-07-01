@@ -1,5 +1,7 @@
 package dfs_bfs.ch13;
 
+import algorithm.test;
+
 import java.util.*;
 
 /*
@@ -48,6 +50,9 @@ public class Ex8 {
         }
     }
 
+    public static final int BLANK = 0;
+    public static final int WALL = 1;
+
     public static ArrayList<Node> getNextPos(Node pos, int[][] board) {
         // 반환 결과(이동 가능한 위치들)
         ArrayList<Node> nextPos = new ArrayList<Node>();
@@ -56,7 +61,49 @@ public class Ex8 {
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};
 
+        int x1 = pos.getX1();
+        int y1 = pos.getY1();
+        int x2 = pos.getX2();
+        int y2 = pos.getY2();
+        int time = pos.getDistance();
+
+        // 한 칸 이동하는 경우
         for (int i = 0; i < 4; i++) {
+            int nx1 = x1 + dx[i];
+            int ny1 = y1 + dy[i];
+            int nx2 = x2 + dx[i];
+            int ny2 = y2 + dy[i];
+
+            if (board[nx1][ny1] != WALL && board[nx2][ny2] != WALL) {
+                nextPos.add(new Node(nx1, ny1, nx2, ny2, time + 1));
+            }
+        }
+
+        // 현재 로봇이 가로로 놓여 있는 경우
+        int[] hor = {-1, 1};
+        if (x1 == x2) {
+            for (int i = 0; i < hor.length; i++) {
+                if (board[x1 + hor[i]][y1] == BLANK && board[x2 + hor[i]][y2] == BLANK) {
+                    nextPos.add(new Node(x1, y1, x1 + hor[i], y1, time + 1));
+                    nextPos.add(new Node(x2, y2, x2 + hor[i], y2, time + 1));
+                }
+            }
+        }
+
+        // 현재 로봇이 세로로 놓여 있는 경우
+        int[] ver = {-1, 1};
+        if (y1 == y2) {
+            for (int i = 0; i < ver.length; i++) {
+                if (board[x1][y1 + ver[i]] == BLANK && board[x2][y2 + ver[i]] == BLANK) {
+                    nextPos.add(new Node(x1, y1, x1, y1 + ver[i], time + 1));
+                    nextPos.add(new Node(x2, y2, x2, y2 + ver[i], time + 1));
+                }
+            }
+        }
+
+        return nextPos;
+
+        /*for (int i = 0; i < 4; i++) {
             int nx1 = pos.getX1() + dx[i];
             int ny1 = pos.getY1() + dy[i];
             int nx2 = pos.getX2() + dx[i];
@@ -94,7 +141,7 @@ public class Ex8 {
             }
         }
 
-        return nextPos;
+        return nextPos;*/
     }
 
     public static int solution(int[][] board) {

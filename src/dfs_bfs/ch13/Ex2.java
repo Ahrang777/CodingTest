@@ -34,7 +34,6 @@ import java.util.*;
 0 0 0 0 0 0 0 0
 
 3
-=============
  */
 
 /**
@@ -44,8 +43,137 @@ import java.util.*;
  * 4. 안전지역 가장 큰 값 구하기
  *
  * https://www.acmicpc.net/problem/14502
+ * 
+ * 연구소
  */
 public class Ex2 {
+
+    /*
+    public static class Position {
+        private int x;
+        private int y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+    }
+
+    public static int n, m;
+    public static int[][] map = new int[8][8];
+    public static int[][] copy = new int[8][8];
+    public static ArrayList<Position> viruses = new ArrayList<>();
+    public static int max = 0;
+
+    public static int[] dx = {-1, 0, 1, 0};
+    public static int[] dy = {0, -1, 0, 1};
+
+    public static final int BLANK = 0;
+    public static final int WALL = 1;
+    public static final int VIRUS = 2;
+
+    public static void copyMap() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                copy[i][j] = map[i][j];
+            }
+        }
+    }
+
+    //bfs
+    public static void spreadVirus() {
+        Queue<Position> q = new LinkedList<>();
+
+        for (Position virus : viruses) {
+            q.offer(new Position(virus.getX(), virus.getY()));
+        }
+
+        while (!q.isEmpty()) {
+            Position now = q.poll();
+            int x = now.getX();
+            int y = now.getY();
+
+            for (int i = 0; i < 4; i++) {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
+                    if (copy[nx][ny] == BLANK) {
+                        copy[nx][ny] = VIRUS;
+                        q.offer(new Position(nx, ny));
+                    }
+                }
+            }
+        }
+    }
+
+    public static int getArea() {
+        int area = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (copy[i][j] == BLANK) {
+                    area += 1;
+                }
+            }
+        }
+
+        return area;
+    }
+
+    public static void setWall(int cnt) {
+        if (cnt == 3) {
+            // map 복사
+            copyMap();
+
+            // 바이러스 전파
+            spreadVirus();
+
+            //안전 영역 계산
+            max = Math.max(max, getArea());
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (map[i][j] == BLANK) {
+                    map[i][j] = WALL;
+                    setWall(cnt + 1);
+                    map[i][j] = BLANK;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
+
+        n = Integer.parseInt(stk.nextToken());
+        m = Integer.parseInt(stk.nextToken());
+
+        for (int i = 0; i < n; i++) {
+            stk = new StringTokenizer(bf.readLine(), " ");
+            for (int j = 0; j < m; j++) {
+                map[i][j] = Integer.parseInt(stk.nextToken());
+                if (map[i][j] == VIRUS)
+                    viruses.add(new Position(i, j));
+            }
+        }
+
+        setWall(0);
+
+        System.out.println(max);
+    }
+     */
 
     public static int n, m, result = 0;
 
@@ -176,10 +304,8 @@ public class Ex2 {
             for (int j = 0; j < m; j++) {
                 if (map[i][j] == 0) {
                     map[i][j] = 1;
-                    count += 1;
-                    setWall(count);
+                    setWall(count + 1);
                     map[i][j] = 0;
-                    count -= 1;
                 }
             }
         }

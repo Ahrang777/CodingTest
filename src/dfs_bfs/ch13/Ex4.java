@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/60058
+ *
+ * 괄호 변환
+ */
 public class Ex4 {
 
     public static String str;

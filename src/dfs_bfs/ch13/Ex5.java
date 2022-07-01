@@ -33,6 +33,12 @@ import java.util.StringTokenizer;
 54
 -24
  */
+
+/**
+ * https://www.acmicpc.net/problem/14888
+ *
+ * 연산자 끼워 넣기
+ */
 public class Ex5 {
 
     public static int n;

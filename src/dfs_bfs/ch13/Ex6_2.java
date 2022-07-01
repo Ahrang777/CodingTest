@@ -52,7 +52,7 @@ public class Ex6_2 {
     public static int n;
     public static char[][] map = new char[7][7];
     public static final char WALL = 'O';
-    public static final char EMPTY = 'X';
+    public static final char BLANK = 'X';
     public static final char TEACHER = 'T';
     public static final char STUDENT = 'S';
 
@@ -118,10 +118,10 @@ public class Ex6_2 {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
-                if (map[i][j] == EMPTY) {
+                if (map[i][j] == BLANK) {
                     map[i][j] = WALL;
                     if(solve(count + 1)) return true;
-                    else    map[i][j] = EMPTY;
+                    map[i][j] = BLANK;
                 }
             }
         }

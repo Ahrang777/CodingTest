@@ -29,6 +29,12 @@ import java.util.*;
 2
 3
  */
+
+/**
+ * https://www.acmicpc.net/problem/18352
+ *
+ * 특정 거리의 도시 찾기
+ */
 public class Ex1 {
 
     //도시 개수, 도로 개수, 거리 정보, 출발 도시
@@ -65,6 +71,11 @@ public class Ex1 {
         // 모든 도시에 대한 최단 거리 초기화
         public static int[] d = new int[300001];
 
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<Integer>());
+            d[i] = -1;
+        }
+
         // 출발 도시까지의 거리는 0으로 설정
         d[x] = 0;
 
@@ -84,6 +95,18 @@ public class Ex1 {
                 }
             }
         }
+
+        // 최단 거리가 K인 모든 도시의 번호를 오름차순으로 출력
+        boolean check = false;
+        for (int i = 1; i <= n; i++) {
+            if (d[i] == k) {
+                System.out.println(i);
+                check = true;
+            }
+        }
+
+        // 만약 최단 거리가 K인 도시가 없다면, -1 출력
+        if (!check) System.out.println(-1);
          */
 
         //BFS

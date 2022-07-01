@@ -5,6 +5,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/*
+입력
+3 3
+1 0 2
+0 0 0
+3 0 0
+2 3 2
+
+출력
+3
+=====
+입력
+3 3
+1 0 2
+0 0 0
+3 0 0
+1 2 2
+
+출력
+0
+ */
+
+/**
+ * https://www.acmicpc.net/problem/18405
+ * 
+ * 경쟁적 전염
+ */
 public class Ex3 {
 
     static class Virus implements Comparable<Virus>{
@@ -117,4 +144,105 @@ public class Ex3 {
             System.out.println();
         }*/
     }
+
+    /*
+    public static class Virus implements Comparable<Virus> {
+        private int x;
+        private int y;
+        private int type;
+        private int time;
+
+        public Virus(int x, int y, int type, int time) {
+            this.x = x;
+            this.y = y;
+            this.type = type;
+            this.time = time;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public int getTime() {
+            return time;
+        }
+
+        @Override
+        public int compareTo(Virus other) {
+            return Integer.compare(this.type, other.type);
+        }
+    }
+
+
+    public static int n, k, s, targetX, targetY;
+    public static int[][] map = new int[200][200];
+    public static ArrayList<Virus> viruses = new ArrayList<>();
+    public static int[] dx = {-1, 0, 1, 0};
+    public static int[] dy = {0, -1, 0, 1};
+
+    public static final int BLANK = 0;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
+
+        n = Integer.parseInt(stk.nextToken());
+        k = Integer.parseInt(stk.nextToken());
+
+        for (int i = 0; i < n; i++) {
+            stk = new StringTokenizer(bf.readLine(), " ");
+            for (int j = 0; j < n; j++) {
+                map[i][j] = Integer.parseInt(stk.nextToken());
+                if (map[i][j] != BLANK) {
+                    viruses.add(new Virus(i, j, map[i][j], 0));
+                }
+            }
+        }
+
+        stk = new StringTokenizer(bf.readLine(), " ");
+        s = Integer.parseInt(stk.nextToken());
+        targetX = Integer.parseInt(stk.nextToken());
+        targetY = Integer.parseInt(stk.nextToken());
+
+        Collections.sort(viruses);
+
+        Queue<Virus> q = new LinkedList<>();
+        for (Virus virus : viruses) {
+            q.offer(virus);
+        }
+
+        while (!q.isEmpty()) {
+            Virus now = q.poll();
+            int time = now.getTime();
+
+            if (time == s) break;
+
+            int x = now.getX();
+            int y = now.getY();
+            int type = now.getType();
+
+            for (int i = 0; i < 4; i++) {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n) {
+                    if (map[nx][ny] == BLANK) {
+                        map[nx][ny] = type;
+                        q.offer(new Virus(nx, ny, type, time + 1));
+                    }
+                }
+            }
+        }
+
+        System.out.println(map[targetX - 1][targetY - 1]);
+    }
+     */
 }
