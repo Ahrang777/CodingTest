@@ -57,7 +57,7 @@ public class Baekjoon14500 {
     public static int[] dx = {-1, 0, 1, 0};
     public static int[] dy = {0, -1, 0, 1};
 
-    public static void dfs(int cnt, int sum, int prevX, int prevY) {
+    public static void dfs(int cnt, int sum, int x, int y) {
         if (cnt == 4) {
             maxValue = Math.max(maxValue, sum);
 
@@ -65,14 +65,14 @@ public class Baekjoon14500 {
         }
 
         for (int i = 0; i < 4; i++) {
-            int x = prevX + dx[i];
-            int y = prevY + dy[i];
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
-            if (x >= 0 && x < n && y >= 0 && y < m) {
-                if (!visited[x][y]) {
-                    visited[x][y] = true;
-                    dfs(cnt + 1, sum + map[x][y], x, y);
-                    visited[x][y] = false;
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
+                if (!visited[nx][ny]) {
+                    visited[nx][ny] = true;
+                    dfs(cnt + 1, sum + map[nx][ny], nx, ny);
+                    visited[nx][ny] = false;
                 }
             }
         }
@@ -123,7 +123,7 @@ public class Baekjoon14500 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 visited[i][j] = true;
-                dfs(1, map[i][j], i, j);
+                dfs(0, 0, i, j);
                 visited[i][j] = false;
                 another(i, j);
             }

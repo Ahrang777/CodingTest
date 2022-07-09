@@ -21,6 +21,8 @@ import java.util.*;
  * 삼성전자 공채
  *
  * dfs, 백트래킹
+ * 
+ * 다시 풀기
  */
 public class Baekjoon12100 {
 

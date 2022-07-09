@@ -99,6 +99,8 @@ import java.util.*;
  *
  * 구슬 탈출2
  * 삼성전자 공채
+ *
+ * 다시 풀기
  */
 public class Baekjoon13460 {
 
