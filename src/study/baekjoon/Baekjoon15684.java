@@ -102,6 +102,7 @@ public class Baekjoon15684 {
 
     public static int result = -1;
 
+    // 가로선이 어느쪽으로 있는지
     public static final int RIGHT = 1;
     public static final int LEFT = -1;
 
