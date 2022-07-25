@@ -43,7 +43,7 @@ public class Dijkstra {
     public static ArrayList<Node>[] graph;
     public static int[] d = new int[100001];
     public static boolean[] visited = new boolean[100001];
-    public static final int INF = (int) 1e9;
+    public static final int INF = Integer.MAX_VALUE;
 
     //O(V²), V: 노드 개수
     public static void dijkstra1(int start) {

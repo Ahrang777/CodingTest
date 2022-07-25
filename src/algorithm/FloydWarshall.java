@@ -33,7 +33,9 @@ public class FloydWarshall {
 
     public static int n, m;
     public static int[][] graph;
-    public static final int INF = (int) 1e9; 
+
+    // Integer.MAX_VALUE 로 했을 경우 제대로 안돌아감, graph[a][i] + graph[i][b] 를 하면 int 범위를 넘어가서 음수가 나오고 이로 인해 min 에서 음수가 나온다.
+    public static final int INF = (int) 1e9;
 
     //시간 복잡도: O(N³)
     //1 ~ N 번 노드
