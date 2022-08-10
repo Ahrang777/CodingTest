@@ -7,10 +7,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
+/*
+입력
+7 9
+1 2 29
+1 5 75
+2 3 35
+2 6 34
+3 4 7
+4 6 23
+4 7 13
+5 6 53
+6 7 25
+
+출력
+159
+ */
+
 /**
  * 최소 신장 트리 >> 신장 트리 중 최소 비용으로 만들 수 있는 신장 트리 찾기
  */
-
 class Edge implements Comparable<Edge> {
 
     private int nodeA;
