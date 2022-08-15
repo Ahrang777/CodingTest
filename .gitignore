@@ -2,3 +2,5 @@
 out/
 *.iml
 .gitmessage.txt
+
+src/algorithm/test.java
