@@ -84,9 +84,10 @@ public class Combination {
 
     // nCr >> 위와 같이 재귀로 할 경우 시간초과가 발생할 수 있다.
     // 다이나믹 프로그래밍 이용
+    // dp[i][j] = iCj
     public static void dpCombination(int n, int r) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j <= i; j++) {
+        for (int i = 1; i <= n; i++) {     // n
+            for (int j = 0; j <= i; j++) {      // r
                 if (j == i || j == 0) {
                     dp[i][j] = BigInteger.ONE;
                 } else {

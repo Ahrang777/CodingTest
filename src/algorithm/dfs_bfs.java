@@ -78,6 +78,15 @@ public class dfs_bfs {
         }
     }
 
+    public static void dfs3(int[][] graph, boolean[] visited, int start) {
+        visited[start] = true;
+        for (int i = 0; i < graph.length; i++) {
+            if (graph[start][i] == 1 && !visited[i]) {
+                dfs3(graph, visited, i);
+            }
+        }
+    }
+
     public static void bfs(int start) {
         Queue<Integer> q = new LinkedList<>();
         q.offer(start);

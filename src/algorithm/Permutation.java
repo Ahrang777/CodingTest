@@ -91,8 +91,21 @@ public class Permutation {
     public static int[] answer = new int[2];
 
 
+    /**
+     * (1,2,3)
+     *
+     * 1, 1
+     * 1, 2
+     * 1, 3
+     * 2, 1
+     * 2, 2
+     * 2, 3
+     * 3, 1
+     * 3, 2
+     * 3, 3
+     */
     //중복 순열
-    public static void dfs(int count) {
+    /*public static void dfs(int count) {
         if (count == 2) {
             dfsPrint();
             return;
@@ -106,6 +119,26 @@ public class Permutation {
     public static void dfsPrint() {
         for (int i = 0; i < 2; i++) {
             System.out.print(answer[i] + " ");
+        }
+        System.out.println();
+    }
+    */
+
+    public static void dfs(int[] arr, int[] output, int depth, int n, int r) {
+        if (depth == r) {
+            dfsPrint(output, r);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            output[depth] = arr[i];
+            dfs(arr, output, depth + 1, n, r);
+        }
+    }
+
+    public static void dfsPrint(int[] output, int r) {
+        for (int i = 0; i < r; i++) {
+            System.out.print(output[i] + " ");
         }
         System.out.println();
     }
@@ -151,6 +184,10 @@ public class Permutation {
         permutation2(arr, output, visited, 0, n, 3);
 
         System.out.println("-------- 3. DFS 중복순열 ---------");
-        dfs(0);
+//        dfs(0);
+
+        int[] array = {1, 2, 3};
+        int[] output1 = new int[n];
+        dfs(array, output1, 0, 3, 2);
     }
 }
