@@ -11,7 +11,7 @@ import java.util.*;
 public class Programmers42839 {
 
     // 아래와 비슷하지만 처음부터 짝수는 걸러서 반복을 줄인다.
-    public static int solution(String numbers) {
+    /*public static int solution(String numbers) {
         HashSet<Integer> set = new HashSet<>();
         permutation("", numbers, set);
         int count = 0;
@@ -32,9 +32,9 @@ public class Programmers42839 {
             if(n%i==0) return false;
         }
         return true;
-    }
+    }*/
 
-    /*public static int solution(String numbers) {
+    public static int solution(String numbers) {
         int answer = 0;
         Set<Integer> set = new HashSet<>();
 
@@ -50,7 +50,7 @@ public class Programmers42839 {
         }
 
         return answer;
-    }*/
+    }
 
     public static void permutation(String prefix, String str, Set<Integer> set) {
         int n = str.length();
@@ -62,7 +62,7 @@ public class Programmers42839 {
     }
 
     // 에라토스테네스의 체 이용
-    /*public static boolean isPrime(int num) {
+    public static boolean isPrime(int num) {
 
         if (num == 0 || num == 1) return false;
 
@@ -75,7 +75,7 @@ public class Programmers42839 {
         }
 
         return true;
-    }*/
+    }
 
     /*static Set<Integer> set;
     static boolean[] visited;
