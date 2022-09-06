@@ -6,6 +6,7 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42627
  *
  * 디스크 컨트롤러
+ * 다시 풀기
  */
 public class Programmers42627 {
 
