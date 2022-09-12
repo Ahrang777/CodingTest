@@ -18,7 +18,9 @@ public class Programmers42885 {
         int min = 0;
 
         for (int max = people.length - 1; min <= max; max--){
+            // 2개 쌍을 이룬경우
             if (people[min] + people[max] <= limit) min++;
+
             answer++;
         }
 
