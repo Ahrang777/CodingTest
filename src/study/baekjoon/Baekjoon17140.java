@@ -112,6 +112,8 @@ public class Baekjoon17140 {
 
             int c = 0;
             for (Pair p : arr) {
+                if (c >= 100)    break;
+
                 int index = p.index;
                 int cnt = p.cnt;
 
@@ -159,17 +161,19 @@ public class Baekjoon17140 {
 
             Collections.sort(arr);
 
-            int c = 0;
+            int r = 0;
             for (Pair p : arr) {
+                if (r >= 100)   break;
+
                 int index = p.index;
                 int cnt = p.cnt;
 
-                tmp[c][i] = index;
-                tmp[c + 1][i] = cnt;
+                tmp[r][i] = index;
+                tmp[r + 1][i] = cnt;
 
-                c += 2;
+                r += 2;
             }
-            max = Math.max(max, c);
+            max = Math.max(max, r);
         }
 
         // 나머지 행 뒤에 0

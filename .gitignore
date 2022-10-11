@@ -3,4 +3,9 @@ out/
 *.iml
 .gitmessage.txt
 
-src/algorithm/test.java
+src/algorithm/Test.java
+**/Study.java
+
+**/kakao/**
+
+**/swexpertacademy/Solution.java

@@ -59,7 +59,7 @@ import java.util.*;
  * 경사로 
  * 삼성전자 공채
  * 
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon14890 {
 
@@ -136,6 +136,7 @@ public class Baekjoon14890 {
             }
         }
 
+        // 길인 경우 >> 길 아닌 경우는 앞에서 다 false 반환
         return true;
     }
 

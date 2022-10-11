@@ -92,6 +92,10 @@ public class ArrayRotation {
      *
      * 270도 m x n
      * rotate[i][j] = arr[j][m-1-i]
+     *
+     *
+     * arr의 경우 n x m 이기에 [][] 에서 연산이 있는 경우  [n ,,,][m ,,,] 이런식으로 각가 n, m에 대해서 연산이 일어날수 밖에 없다.
+     * 90, 270의 경우 rotate[][] 을 생각해보면 m x n 으로 뒤집힌다. 따라서 arr에서 각 [][] 에 i, j 뒤집힌 채로 들어감 arr[n ,,, j][m ,,, i]
      */
     static int[][] rotate(int degree) {
         int[][] rotate;

@@ -104,7 +104,7 @@ public class Baekjoon14500 {
 
         maxValue = Math.max(maxValue, sum);
     }
-    
+
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
@@ -123,7 +123,7 @@ public class Baekjoon14500 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 visited[i][j] = true;
-                dfs(0, 0, i, j);
+                dfs(1, map[i][j], i, j);
                 visited[i][j] = false;
                 another(i, j);
             }

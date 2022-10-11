@@ -198,4 +198,97 @@ public class Baekjoon15684 {
 
         return false;
     }
+
+    /*
+    static int N, M, H;
+    static int[][] map;
+
+    static final int RIGHT = 1;
+    static final int LEFT = -1;
+
+    static int res = -1;
+
+    public static void solution() {
+        for (int i = 0; i < 4; i++) {
+            if (dfs(0, i)) {
+                res = i;
+                break;
+            }
+        }
+    }
+
+    public static boolean dfs(int depth, int dest) {
+        if (depth == dest) {
+
+            if (check()) {
+                return true;
+            }
+
+            return false;
+        }
+
+        for (int i = 1; i <= H; i++) {
+            for (int j = 1; j < N; j++) {
+                if (map[i][j] != 0 || map[i][j+1] > 0) continue;
+
+                map[i][j] = RIGHT;
+                map[i][j + 1] = LEFT;
+
+                if (dfs(depth + 1, dest)) {
+                    return true;
+                }
+
+                map[i][j] = 0;
+                map[i][j + 1] = 0;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean check() {
+        for (int i = 1; i <= N; i++) {
+            int x = 1;
+            int y = i;
+
+            while (x <= H) {
+                if (map[x][y] == RIGHT) {
+                    y += 1;
+                } else if (map[x][y] == LEFT) {
+                    y -= 1;
+                }
+                x += 1;
+            }
+
+            if (y != i) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        H = Integer.parseInt(st.nextToken());
+
+        map = new int[H + 1][N + 1];
+
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+
+            map[a][b] = RIGHT;
+            map[a][b + 1] = LEFT;
+        }
+
+        solution();
+        System.out.println(res);
+    }
+     */
 }

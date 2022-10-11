@@ -9,7 +9,7 @@ import java.util.*;
  * 낚시왕
  * 삼성전자 공채
  * 
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon17143 {
 

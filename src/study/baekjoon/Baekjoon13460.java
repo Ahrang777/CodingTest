@@ -100,7 +100,7 @@ import java.util.*;
  * 구슬 탈출2
  * 삼성전자 공채
  *
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon13460 {
 
@@ -116,7 +116,7 @@ public class Baekjoon13460 {
             this.by = by;
             this.cnt = cnt;
         }
-    }
+    }   // 한번 방향 전환으로 R, B 동시에 움직이니까 하나로 묶음
 
     public static int n, m;
     public static char[][] board = new char[10][10];
@@ -132,7 +132,10 @@ public class Baekjoon13460 {
 
     public static void bfs(int rx, int ry, int bx, int by) {
         Queue<Marble> q = new LinkedList<>();
-        boolean[][][][] visited = new boolean[n][m][n][m];
+
+        // R, B 가 Marble로 하나로 묶였으니 같이 생각
+        // [n][m], [n][m] 각각 생각
+        boolean[][][][] visited = new boolean[n][m][n][m];  
 
         q.offer(new Marble(rx, ry, bx, by, 0));
         visited[rx][ry][bx][by] = true;
@@ -146,6 +149,7 @@ public class Baekjoon13460 {
                 return;
             }
 
+            // 여러 방향으로 시도하기때문에 현재 뽑은거에서 실패해도 다음에 뽑은거에서 성공 가능하기에 continue
             // 파란 공이 빠지는 경우 실패
             if (board[now.bx][now.by] == HOLE) {
                 continue;

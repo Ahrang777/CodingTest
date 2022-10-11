@@ -22,7 +22,7 @@ import java.util.*;
  *
  * dfs, 백트래킹
  * 
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon12100 {
 
@@ -57,19 +57,26 @@ public class Baekjoon12100 {
         }
     }
 
+    // 위로 이동
     public static void move(int[][] copiedBoard) {
         for (int c = 0; c < n; c++) {
+            // 맨 위에서부터 아래로 한칸씩 >> 타겟이 이동할 위치
             int index = 0;
-            int block = 0;
+
+            // 블록 충돌을 위한 값, 이전 블록의 값 
+            // 0이면 없던거고 0이 아니면 이전에 충돌 안한 움직인 블록이 있는것
+            // 따라서 이전에 움직인 블록과 다르면 그냥 이동만, 같으면 충돌처리
+            int block = 0;  
 
             for (int r = 0; r < n; r++) {
                 if (copiedBoard[r][c] != BLANK) {
 
+                    // 충돌처리
                     if (block == copiedBoard[r][c]) {
                         copiedBoard[index - 1][c] = block * 2;
                         block = 0;
                         copiedBoard[r][c] = BLANK;
-                    } else {
+                    } else {    // 단순 이동처리
                         block = copiedBoard[r][c];
                         copiedBoard[r][c] = BLANK;
                         copiedBoard[index][c] = block;

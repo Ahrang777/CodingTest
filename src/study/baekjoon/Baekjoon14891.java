@@ -71,7 +71,7 @@ import java.util.*;
  * 삼성전자 공채
  *
  * 참고: https://bcp0109.tistory.com/33
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon14891 {
 
@@ -113,6 +113,11 @@ public class Baekjoon14891 {
         int score = 0;
         for (int i = 0; i < 4; i++) {
 
+            /*
+            if (wheel[i][0] == 1) {
+                answer += Math.pow(2, i);
+            }
+             */
             //////// 이부분 기억하기
             score += wheel[i][0] * (1 << i);
         }

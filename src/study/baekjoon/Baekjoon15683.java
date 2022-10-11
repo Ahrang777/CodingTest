@@ -73,7 +73,7 @@ import java.util.*;
  * 감시
  * 삼성전자 공채
  *
- * 다시 풀기
+ * 다시 풀기 (2)
  */
 public class Baekjoon15683 {
 
@@ -204,4 +204,149 @@ public class Baekjoon15683 {
         solution(0, map);
         System.out.println(minValue);
     }
+
+    /*
+    static class CCTV {
+        int index, x, y;
+
+        public CCTV(int index, int x, int y) {
+            this.index = index;
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static int N, M;
+    static int[][] map;
+    static final int BLANK = 0;
+    static final int WALL = 6;
+
+    static List<CCTV> cctvs = new ArrayList<>();
+
+    // U, R, D, L
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, 1, 0, -1};
+
+    static int[][][] cctvDir = {
+            {{0}},
+            {{1}, {2}, {3}, {0}},   // 1번
+            {{1, 3}, {0, 2}},   // 2번
+            {{0, 1}, {1, 2}, {2, 3}, {3, 0}},   // 3번
+            {{0, 1, 3}, {0, 1, 2}, {1, 2, 3}, {2, 3, 0}},   // 4번
+            {{0, 1, 2, 3}}  // 5번 CCTV
+    };
+
+    static int minValue = Integer.MAX_VALUE;
+
+    public static boolean isRange(int x, int y) {
+        return (x >= 0 && x < N && y >= 0 && y < M) ? true : false;
+    }
+
+    public static void solution(int depth, int[] output) {
+        if (depth == cctvs.size()) {
+
+            // map 복사
+            int[][] copy = copy();
+
+            for (int i = 0; i < cctvs.size(); i++) {
+                CCTV now = cctvs.get(i);
+                int index = now.index;
+                int dirIndex = output[i];
+                int[] dirs = cctvDir[index][dirIndex];
+
+                for (int dir : dirs) {
+                    int nx = now.x;
+                    int ny = now.y;
+                    while (true) {
+                        nx += dx[dir];
+                        ny += dy[dir];
+
+                        if (!isRange(nx, ny) || copy[nx][ny] == WALL) {
+                            break;
+                        }
+
+                        if (copy[nx][ny] == BLANK) {
+                            copy[nx][ny] = -1;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+            }
+
+//            for (int i = 0; i < N; i++) {
+//                for (int j = 0; j < M; j++) {
+//                    System.out.print(copy[i][j] + " ");
+//                }
+//                System.out.println();
+//            }
+//            System.out.println();
+
+            minValue = Math.min(minValue, count(copy));
+//            System.out.println(minValue);
+
+            return;
+        }
+
+        CCTV cctv = cctvs.get(depth);
+        int index = cctv.index;
+
+        for (int i = 0; i < cctvDir[index].length; i++) {
+            output[depth] = i;
+            solution(depth + 1, output);
+        }
+    }
+
+    public static int count(int[][] map) {
+        int cnt = 0;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (map[i][j] == BLANK) {
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public static int[][] copy() {
+        int[][] tmp = new int[N][M];
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                tmp[i][j] = map[i][j];
+            }
+        }
+
+        return tmp;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+        map = new int[N][M];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < M; j++) {
+                int index = Integer.parseInt(st.nextToken());
+                map[i][j] = index;
+
+                if (index >= 1 && index <= 5) {
+                    cctvs.add(new CCTV(index, i, j));
+                }
+            }
+        }
+
+        int[] output = new int[cctvs.size()];
+        solution(0, output);
+
+        System.out.println(minValue);
+    }
+     */
 }
