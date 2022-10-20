@@ -155,6 +155,9 @@ public class Combination {
     //0 ~ n-1 숫자조합
     //target 을 늘려가며 target을 넣는것
     //index는 빈 arr에 조합으로 선택된 숫자를 넣을때만 +1, 즉 index가 뽑은 갯수가 된다.
+    /**
+     * 이 형태 자주 사용됨
+     */
     public static void comb3(int[] arr, int index, int n, int r, int target) {
         if (r == 0) {
             print3(arr, index);
@@ -165,8 +168,8 @@ public class Combination {
         }
         else{
             arr[index] = target;
-            comb3(arr, index + 1, n, r - 1, target + 1);
-            comb3(arr, index, n, r, target + 1);
+            comb3(arr, index + 1, n, r - 1, target + 1);    // 포함된 경우
+            comb3(arr, index, n, r, target + 1);    // 다시 포함되지 않은 경우로 원복
         }
     }
 
@@ -249,6 +252,9 @@ public class Combination {
     //index : 시작 지점, count : nCr에서 r만큼 뽑기위해 세는 용도
     //조합은 순서x, 이전을 볼 필요 없이 그 이후만 보면 되기에 시작점 지정하기 위한 index >> for index 부터 나머지 확인
     //조합은 1,2,3 과 3,2,1 은 같은거라서 앞에서 부터 순서대로 방문한 것들만 뽑으면 된다. 별도의 출력용 배열 필요없이 기존의 배열과 방문확인용 배열 만으로 해결된다.
+    /**
+     * 이 형태 자주 사용됨
+     */
     public static void dfs(int index, int count) {
         if (count == 3) {
             dfsPrint();

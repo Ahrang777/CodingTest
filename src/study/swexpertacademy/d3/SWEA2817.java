@@ -38,6 +38,7 @@ public class SWEA2817 {
         }
     }
 
+    // 이런 형태 dfs 기억하기
     public static void dfs(int depth, int sum) {
         if (depth == N) {
             if (sum == K) cnt++;
