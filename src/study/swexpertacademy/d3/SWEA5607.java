@@ -12,6 +12,8 @@ import java.util.*;
  * 참고
  * https://minkwon4.tistory.com/25
  * https://diane21.tistory.com/44
+ *
+ * TODO 페르마의 소정리
  */
 public class SWEA5607 {
     /*

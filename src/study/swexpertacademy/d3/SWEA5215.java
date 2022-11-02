@@ -9,7 +9,7 @@ import java.util.*;
  * 햄버거 다이어트
  * 다시 풀기
  * 
- * 이런 형태 기억
+ * TODO 이런 형태 기억
  */
 public class SWEA5215 {
     static int max;
