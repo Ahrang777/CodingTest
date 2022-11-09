@@ -9,7 +9,44 @@ import java.util.*;
  * [S/W 문제해결 기본] 5일차 - GNS
  */
 public class Swea1221 {
-    public static void main(String args[]) throws Exception
+    static int TC, N;
+    static Map<String, Integer> numMap;
+    static int[] countArr;
+    static String[] numStrArr = {"ZRO", "ONE", "TWO", "THR", "FOR", "FIV", "SIX", "SVN", "EGT", "NIN"};
+    public static void main(String[] args) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        numMap = new HashMap<>();
+        for(int i = 0 ; i < numStrArr.length ; i++) {
+            numMap.put(numStrArr[i], i);
+        }
+
+        TC = Integer.parseInt(in.readLine());
+        for(int tc = 1 ; tc <= TC ; tc++) {
+            st = new StringTokenizer(in.readLine());
+            st.nextToken();
+            countArr = new int[numStrArr.length];
+            N = Integer.parseInt(st.nextToken());
+
+            st = new StringTokenizer(in.readLine());
+            for(int i = 0 ; i < N ; i++) {
+                countArr[numMap.get(st.nextToken())]++;
+            }
+
+            sb.append("#").append(tc).append("\n");
+            for(int i = 0 ; i < numStrArr.length ; i++) {
+                for(int j = 0 ; j < countArr[i] ; j++) {
+                    sb.append(numStrArr[i]).append(" ");
+                }
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb);
+    }
+
+    /*public static void main(String args[]) throws Exception
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -54,5 +91,5 @@ public class Swea1221 {
             map1.put(arr[i], i);
             map2.put(i, arr[i]);
         }
-    }
+    }*/
 }
