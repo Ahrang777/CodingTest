@@ -7,6 +7,8 @@ import java.io.*;
  * https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=3&contestProbId=AV14zIwqAHwCFAYD&categoryId=AV14zIwqAHwCFAYD&categoryType=CODE&problemTitle=&orderBy=RECOMMEND_COUNT&selectCodeLang=ALL&select-1=3&pageSize=10&pageIndex=3
  *
  * [S/W 문제해결 기본] 8일차 - 암호문3
+ *
+ * TODO 다시풀기
  */
 public class Swea1230 {
     public static void main(String args[]) throws Exception {
