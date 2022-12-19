@@ -2,11 +2,10 @@ package grid.ch11;
 
 import java.util.*;
 
-/*
-https://programmers.co.kr/learn/courses/30/lessons/42891
-
-food_times: [3,1,2], k: 5
-result: 1
+/**
+ * https://programmers.co.kr/learn/courses/30/lessons/42891
+ *
+ * 무지의 먹방 라이브
  */
 public class Ex6 {
 
@@ -37,12 +36,14 @@ public class Ex6 {
 
     static class Solution {
         public int solution(int[] food_times, long k) {
+            int answer = -1;
+
             //전체 음식 먹는 시간이 k 보다 작거나 같으면 -1
             long sum = 0;
             for(int i=0;i<food_times.length;i++){
                 sum+=food_times[i];
             }
-            if(sum <= k) return -1;
+            if(sum <= k) return answer;
 
             PriorityQueue<Food> pq = new PriorityQueue<>();
             for(int i=0;i<food_times.length;i++){
@@ -61,8 +62,14 @@ public class Ex6 {
                 prev = now; //가장 최근에 먹은 음식의 시간 설정
             }
 
+            /*
+            List<Food> list = pq.stream().sorted((f1, f2) -> Integer.compare(f1.index, f2.index)).collect(Collectors.toList());
 
-            ArrayList<Food> result = new ArrayList<>();
+            answer = list.get((int) ((k - time) % length)).index;
+            return answer;
+             */
+
+            List<Food> result = new ArrayList<>();
             while(!pq.isEmpty()){
                 result.add(pq.poll());
             }
@@ -76,7 +83,8 @@ public class Ex6 {
             });
 
             //result 리스트에 있는 음식은 다 못 먹는 음식이기에 없어질 걱정 안 하고 아래처럼 단순히 index 찾기 가능
-            return result.get((int) ((k-sum)%length)).getIndex();
+            answer = result.get((int) ((k - sum) % length)).getIndex();
+            return answer;
         }
     }
 
@@ -143,6 +151,61 @@ public class Ex6 {
             return -1;
         }
     }*/
+
+    /*
+    class Food{
+        int time;
+        int idx;
+        Food(int time, int idx){
+            this.time = time;
+            this.idx = idx;
+        }
+    }
+
+    Comparator<Food> CompTime = new Comparator<Food>(){
+        public int compare(Food a, Food b){
+            return a.time - b.time;
+        }
+    };
+
+    Comparator<Food> CompIdx = new Comparator<Food>(){
+        public int compare(Food a, Food b){
+            return a.idx - b.idx;
+        }
+    };
+
+    public int solution(int[] food_times, long k) {
+        List<Food> foods = new LinkedList<Food>();
+        int n = food_times.length;
+        //파라미터로 들어온 food_times와 번호를 linkedList에 저장
+        for(int i = 0; i < n; i ++){
+            foods.add(new Food(food_times[i], i+1));
+        }
+        //음식을 다 먹는 순서가 짧은 순으로 오름차순 정렬
+        foods.sort(CompTime);
+
+        //시간 계산
+        int pretime = 0;
+        int i = 0;
+        for(Food f : foods){
+            long diff = f.time - pretime;
+            if(diff != 0){
+                long spend = diff * n;
+                if(spend <= k){
+                    k -= spend;
+                    pretime = f.time;
+                }else{
+                    k %= n;
+                    foods.subList(i,food_times.length).sort(CompIdx);
+                    return foods.get(i+(int)k).idx;
+                }
+            }
+            i++;
+            --n;
+        }
+        return -1;
+    }
+     */
 
     public static void main(String[] args) {
         int[] food_times = {3, 1, 2};
