@@ -12,6 +12,7 @@ package implementation.ch12;
  * https://programmers.co.kr/learn/courses/30/lessons/60057
  * 
  * 문자열 압축
+ * 다시풀기: 2
  */
 public class Ex3 {
 
@@ -116,6 +117,42 @@ public class Ex3 {
         //중복o, 압축 진행중
         return result += getSplitedLength(postString, n, repeat + 1);
     }
+
+    /*
+    public int solution(String s) {
+        int minValue = Integer.MAX_VALUE;
+
+        for (int i = 1; i <= (s.length() / 2) + 1; i++) {
+            int length = splitByLength(s, i, 1).length();
+            minValue = Math.min(minValue, length);
+        }
+
+        return minValue;
+    }
+
+    public String splitByLength(String str, int length, int repeat) {
+        // 마지막에 묶어야 하는 길이보다 작은 경우면 그냥 이어 붙임
+        if (str.length() < length) {
+            return str;
+        }
+
+//        String result = "";
+        String prefix = str.substring(0, length);
+        String sub = str.substring(length);
+
+        if (!sub.startsWith(prefix)) {
+            if (repeat == 1) {
+                // return result += prefix + splitByLength(sub, length, 1);
+                return prefix + splitByLength(sub, length, 1);
+            }
+            //return result += repeat + prefix + splitByLength(sub, length, 1);
+            return repeat + prefix + splitByLength(sub, length, 1);
+        }
+
+        //return result += splitByLength(sub, length, repeat + 1);
+        return splitByLength(sub, length, repeat + 1);
+    }
+     */
 
     public static void main(String[] args) {
         String[] str = {
