@@ -10,12 +10,12 @@ result: true
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/60059
- * 
+ *
  * 자물쇠와 열쇠
+ * 다시 풀기: 2
  */
-public class Ex4 {
-
-    public static int[][] rotateKey(int[][] key) {
+class Solution {
+    public int[][] rotateKey(int[][] key) {
         int n = key.length;
         int[][] result = new int[n][n];
 
@@ -28,7 +28,7 @@ public class Ex4 {
         return result;
     }
 
-    public static boolean check(int[][] lock){
+    public boolean check(int[][] lock){
 
         int length = lock.length / 3;
 
@@ -43,7 +43,7 @@ public class Ex4 {
         return true;
     }
 
-    public static boolean solution(int[][] key, int[][] lock) {
+    public boolean solution(int[][] key, int[][] lock) {
         //boolean answer = true;
 
         int size = lock.length;
@@ -86,7 +86,9 @@ public class Ex4 {
 
         return false;
     }
+}
 
+public class Ex4 {
     public static void main(String[] args) {
         int[][] key = {
                 {0, 0, 0},
@@ -99,6 +101,7 @@ public class Ex4 {
                 {1, 1, 0},
                 {1, 0, 1}
         };
-        System.out.println("result = " + solution(key, lock));
+
+        System.out.println("result = " + new Solution().solution(key, lock));
     }
 }
