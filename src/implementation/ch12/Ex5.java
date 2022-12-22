@@ -1,53 +1,20 @@
 package implementation.ch12;
 
+import study.Study;
+
 import java.io.*;
 import java.util.*;
 
-/*
-6
-3
-3 4
-2 5
-5 3
-3
-3 D
-15 L
-17 D
-
-9
-========
-10
-4
-1 2
-1 3
-1 4
-1 5
-4
-8 D
-10 D
-11 D
-13 L
-
-21
-========
-10
-5
-1 5
-1 3
-1 2
-1 6
-1 7
-4
-8 D
-10 D
-11 D
-13 L
-
-13
+/**
+ * https://www.acmicpc.net/problem/3190
+ *
+ * 뱀
+ *
+ * TODO 다시풀기: 2
  */
 public class Ex5 {
     
-    static class Direction{
+    /*static class Direction{
         private int time;
         private char dir;
         
@@ -185,8 +152,140 @@ public class Ex5 {
         }
 
         System.out.println(play());
+    }*/
+
+
+
+
+
+
+
+
+    static class Position {
+        int x, y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    final static int BLANK = 0;
+    final static int APPLE = 1;
+    final static int SNAKE = 2;
+    final static char RIGHT = 'D';
+
+    static int N, K, L;
+    static int[][] map;
+
+    static Map<Integer, Character> directions;
+
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, -1, 0, 1};
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        N = Integer.parseInt(br.readLine());
+        map = new int[N][N];
+        K = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < K; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            int x = Integer.parseInt(st.nextToken()) - 1;
+            int y = Integer.parseInt(st.nextToken()) - 1;
+            map[x][y] = APPLE;
+        }
+
+        L = Integer.parseInt(br.readLine());
+
+        directions = new HashMap<>();
+
+        for (int i = 0; i < L; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            int X = Integer.parseInt(st.nextToken());
+            char dir = st.nextToken().charAt(0);
+            directions.put(X, dir);
+        }
+
+        System.out.println(play());
+    }
+
+    private static int play() {
+//        Queue<Position> snake = new LinkedList<>();
+//        int x = 0;
+//        int y = 0;
+//
+//        map[x][y] = SNAKE;
+//        snake.offer(new Position(x, y));
+
+        LinkedList<Position> snake = new LinkedList<>();
+        map[0][0] = SNAKE;
+        snake.offer(new Position(0, 0));
+
+        int time = 0;
+        int dir = 3;
+
+        while (true) {
+//            int nx = x + dx[dir];
+//            int ny = y + dy[dir];
+
+            Position head = snake.getLast();
+            int nx = head.x + dx[dir];
+            int ny = head.y + dy[dir];
+
+            time++;
+
+            if (!isRange(nx, ny) || isSnake(nx, ny)) {
+                break;
+            }
+
+            // 이동 && 해당 위치 사과 확인
+            // 사과에 따라 꼬리 결정
+            if (map[nx][ny] != APPLE) {
+                Position tail = snake.poll();
+                map[tail.x][tail.y] = BLANK;
+            }
+
+            snake.offer(new Position(nx, ny));
+            map[nx][ny] = SNAKE;
+//            x = nx;
+//            y = ny;
+
+            // 방향 조정
+            if (directions.containsKey(time)) {
+                char command = directions.get(time);
+                if (command == RIGHT) {
+                    dir = rotateRight(dir);
+                } else {
+                    dir = rotateLeft(dir);
+                }
+            }
+        }
+
+        return time;
+    }
+
+    private static int rotateLeft(int dir) {
+        return (dir + 1) % 4;
+    }
+
+    private static int rotateRight(int dir) {
+        return (dir + 4 - 1) % 4;
+    }
+
+    public static boolean isRange(int x, int y) {
+        return x >= 0 && x < N && y >= 0 && y < N;
+    }
+
+    private static boolean isSnake(int x, int y) {
+        return map[x][y] == SNAKE;
     }
 }
+
 
 
 /*
