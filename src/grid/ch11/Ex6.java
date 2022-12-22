@@ -6,6 +6,8 @@ import java.util.*;
  * https://programmers.co.kr/learn/courses/30/lessons/42891
  *
  * 무지의 먹방 라이브
+ *
+ * TODO 다시풀기: 2
  */
 public class Ex6 {
 

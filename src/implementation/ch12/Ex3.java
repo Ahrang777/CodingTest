@@ -12,7 +12,7 @@ package implementation.ch12;
  * https://programmers.co.kr/learn/courses/30/lessons/60057
  * 
  * 문자열 압축
- * 다시풀기: 2
+ * TODO 다시풀기: 2
  */
 public class Ex3 {
 
