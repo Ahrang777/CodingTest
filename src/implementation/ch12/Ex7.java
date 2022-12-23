@@ -46,11 +46,123 @@ import java.util.*;
  *
  * 치킨 배달
  *
+ * TODO 다시풀기: 2
+ *
  * 풀이방법
  * 1. 조합
  * 2. DFS, 백트래킹
  */
 public class Ex7 {
+    /*
+    static class Position {
+        int x, y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    static class Combination {
+        int n, r;
+        int[] now;
+        List<List<Position>> results;
+
+        public Combination(int n, int r) {
+            this.n = n;
+            this.r = r;
+            now = new int[r];
+            results = new ArrayList<>();
+        }
+
+        public void combination(List<Position> chickens, int index, int target) {
+            if (index == r) {
+                List<Position> tmp = new ArrayList<>();
+                for (int i : now) {
+                    tmp.add(chickens.get(i));
+                }
+
+                results.add(tmp);
+
+                return;
+            }
+
+            if (target == n) {
+                return;
+            }
+
+            now[index] = target;
+            combination(chickens, index + 1, target + 1);
+            combination(chickens, index, target + 1);
+        }
+    }
+
+    static final int BLANK = 0;
+    static final int HOUSE = 1;
+    static final int CHICKEN = 2;
+
+    static int N, M;
+    static int[][] map;
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        List<Position> chickens = new ArrayList<>();
+        List<Position> houses = new ArrayList<>();
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+        map = new int[N][N];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < N; j++) {
+                map[i][j] = Integer.parseInt(st.nextToken());
+                if (map[i][j] == CHICKEN) {
+                    chickens.add(new Position(i, j));
+                }
+                if (map[i][j] == HOUSE) {
+                    houses.add(new Position(i, j));
+                }
+            }
+        }
+
+        // 치킨집 개수 중 M 개 선택 >> nCr 조합 누적
+        Combination c = new Combination(chickens.size(), M);
+        c.combination(chickens, 0, 0);
+        List<List<Position>> results = c.results;
+
+        int minValue = Integer.MAX_VALUE;
+
+        for (List<Position> result : results) {
+            minValue = Math.min(minValue, cityChickenDistance(result, houses));
+        }
+
+        System.out.println(minValue);
+    }
+
+    private static int cityChickenDistance(List<Position> chickens, List<Position> houses) {
+        int total = 0;
+
+        for (Position house : houses) {
+            total += chickenDistance(chickens, house);
+        }
+
+        return total;
+    }
+
+    private static int chickenDistance(List<Position> chickens, Position house) {
+        int minValue = Integer.MAX_VALUE;
+
+        for (Position chicken : chickens) {
+            minValue = Math.min(minValue, Math.abs(chicken.x - house.x) + Math.abs(chicken.y - house.y));
+        }
+
+        return minValue;
+    }
+     */
 
     static class Combination {
         private int n;
