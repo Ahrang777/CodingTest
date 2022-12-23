@@ -1,5 +1,7 @@
 package dfs_bfs.ch13;
 
+import study.Study;
+
 import java.io.*;
 import java.util.*;
 
@@ -175,7 +177,7 @@ public class Ex2 {
     }
      */
 
-    public static int n, m, result = 0;
+    /*public static int n, m, result = 0;
 
     public static int[][] map = new int[8][8]; // 초기 맵 배열
     public static int[][] temp = new int[8][8]; // 벽을 설치한 뒤의 맵 배열
@@ -280,7 +282,7 @@ public class Ex2 {
         if (count == 3) {
             copy();
 
-            /*
+            *//*
             //바이러스 전파
             //특정 위치별 바이러스 전파
             //DFS를 이용한 바이러스 전파
@@ -292,7 +294,7 @@ public class Ex2 {
                 }
             }
 
-            result = Math.max(result, getSafeArea());*/
+            result = Math.max(result, getSafeArea());*//*
 
             //BFS를 이용한 바이러스 전파
             bfs();
@@ -327,5 +329,117 @@ public class Ex2 {
 
         setWall(0);
         System.out.println(result);
+    }*/
+
+    static class Position {
+        int x, y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    static final int BLANK = 0;
+    static final int WALL = 1;
+    static final int VIRUS = 2;
+
+    static int N, M;
+    static int[][] map;
+    static int[][] copy;
+    static List<Position> viruses = new ArrayList<>();
+    static int maxValue = Integer.MIN_VALUE;
+
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, -1, 0, 1};
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+        map = new int[N][M];
+
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+
+            for (int j = 0; j < M; j++) {
+                map[i][j] = Integer.parseInt(st.nextToken());
+                if (map[i][j] == VIRUS) {
+                    viruses.add(new Position(i, j));
+                }
+            }
+        }
+
+        wall(0);
+
+        System.out.println(maxValue);
+    }
+
+    private static void wall(int depth) {
+        if (depth == 3) {
+            copy(); // map 원본 유지를 위한 복사본 생성
+            spread();   // 바이러스 전파
+            maxValue = Math.max(maxValue, safeArea());
+            return;
+        }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (map[i][j] == BLANK) {
+                    map[i][j] = WALL;
+                    wall(depth + 1);
+                    map[i][j] = BLANK;
+                }
+            }
+        }
+    }
+
+    private static void spread() {
+        Queue<Position> q = new LinkedList<>();
+        for (Position virus : viruses) {
+            q.offer(virus);
+        }
+
+        while (!q.isEmpty()) {
+            Position now = q.poll();
+
+            for (int i = 0; i < 4; i++) {
+                int nx = now.x + dx[i];
+                int ny = now.y + dy[i];
+
+                if (isRange(nx, ny) && copy[nx][ny] == BLANK) {
+                    copy[nx][ny] = VIRUS;
+                    q.offer(new Position(nx, ny));
+                }
+            }
+        }
+    }
+
+    private static boolean isRange(int x, int y) {
+        return x >= 0 && x < N && y >= 0 && y < M;
+    }
+
+    private static void copy() {
+        copy = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                copy[i][j] = map[i][j];
+            }
+        }
+    }
+
+    private static int safeArea() {
+        int total = 0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (copy[i][j] == BLANK) {
+                    total++;
+                }
+            }
+        }
+
+        return total;
     }
 }
