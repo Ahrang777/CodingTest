@@ -41,7 +41,7 @@ import java.util.StringTokenizer;
  */
 public class Ex5 {
 
-    public static int n;
+    public static int N;
     public static int[] arr = new int[11];
 
     public static int min = (int) 1e9;
@@ -49,29 +49,29 @@ public class Ex5 {
 
     public static int add, sub, mul, div;
 
-    public static void calculation(int i, int now) {
-        if (i == n) {
-            min = Math.min(min, now);
-            max = Math.max(max, now);
+    public static void calculation(int index, int result) {
+        if (index == N) {
+            min = Math.min(min, result);
+            max = Math.max(max, result);
         } else {
             if (add > 0) {
                 add--;
-                calculation(i + 1, now + arr[i]);
+                calculation(index + 1, result + arr[index]);
                 add++;
             }
             if (sub > 0) {
                 sub--;
-                calculation(i + 1, now - arr[i]);
+                calculation(index + 1, result - arr[index]);
                 sub++;
             }
             if (mul > 0) {
                 mul--;
-                calculation(i + 1, now * arr[i]);
+                calculation(index + 1, result * arr[index]);
                 mul++;
             }
             if (div > 0) {
                 div--;
-                calculation(i + 1, now / arr[i]);
+                calculation(index + 1, result / arr[index]);
                 div++;
             }
         }
@@ -81,10 +81,10 @@ public class Ex5 {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stk = null;
 
-        n = Integer.parseInt(bf.readLine());
+        N = Integer.parseInt(bf.readLine());
 
         stk = new StringTokenizer(bf.readLine(), " ");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(stk.nextToken());
         }
 
@@ -99,4 +99,85 @@ public class Ex5 {
         System.out.println(max);
         System.out.println(min);
     }
+
+    /*
+    static int N;
+    static int minValue = Integer.MAX_VALUE;
+    static int maxValue = Integer.MIN_VALUE;
+    static int[] numbers;
+    static boolean[] visited;
+    static List<Character> op = new ArrayList<>();
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        N = Integer.parseInt(br.readLine());
+        numbers = new int[N];
+        visited = new boolean[N];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
+        }
+
+        int[] cnt = new int[4];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < 4; i++) {
+            cnt[i] = Integer.parseInt(st.nextToken());
+        }
+
+        for (int i = 0; i < cnt[0]; i++) {
+            op.add('+');
+        }
+        for (int i = 0; i < cnt[1]; i++) {
+            op.add('-');
+        }
+        for (int i = 0; i < cnt[2]; i++) {
+            op.add('*');
+        }
+        for (int i = 0; i < cnt[3]; i++) {
+            op.add('/');
+        }
+
+        char[] out = new char[N - 1];
+        permutation(out, visited, 0);
+
+        System.out.println(maxValue);
+        System.out.println(minValue);
+    }
+
+    private static void permutation(char[] out, boolean[] visited, int depth) {
+        if (depth == N - 1) {
+            int index = 0;
+            int result = numbers[index++];
+
+            for (char ch : out) {
+                if (ch == '+') {
+                    result += numbers[index++];
+                } else if (ch == '-') {
+                    result -= numbers[index++];
+                } else if (ch == '*') {
+                    result *= numbers[index++];
+                } else if (ch == '/') {
+                    result /= numbers[index++];
+                }
+            }
+
+            minValue = Math.min(minValue, result);
+            maxValue = Math.max(maxValue, result);
+
+            return;
+        }
+
+        for (int i = 0; i < N - 1; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                out[depth] = op.get(i);
+                permutation(out, visited, depth + 1);
+                visited[i] = false;
+            }
+        }
+    }
+     */
 }
