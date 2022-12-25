@@ -1,15 +1,120 @@
 package implementation.ch12;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/60062
  * 
  * 외벽 점검
+ *
+ * TODO 다시풀기: 2
  */
-public class Ex8 {
 
-    static class Permutation{
+public class Ex8 {
+    static class Solution {
+        static class Permutation {
+            int n, r;
+            int[] now;
+            List<List<Integer>> results;
+
+            public Permutation(int n, int r) {
+                this.n = n;
+                this.r = r;
+                now = new int[r];
+                results = new ArrayList<>();
+            }
+
+            public void permutation(int[] arr, boolean[] visited, int depth) {
+                if (depth == r) {
+                    List<Integer> tmp = new ArrayList<>();
+                    for (int n : now) {
+                        tmp.add(n);
+                    }
+
+                    results.add(tmp);
+                    return;
+                }
+
+                for (int i = 0; i < n; i++) {
+                    if (!visited[i]) {
+                        now[depth] = arr[i];
+                        visited[i] = true;
+                        permutation(arr, visited, depth + 1);
+                        visited[i] = false;
+                    }
+                }
+            }
+        }
+
+        public int solution(int n, int[] weak, int[] dist) {
+            int answer = dist.length + 1;
+            boolean[] visited = new boolean[dist.length];
+            List<Integer> weaks = new ArrayList<>();
+
+            for (Integer w : weak) {
+                weaks.add(w);
+            }
+
+            for (Integer w : weak) {
+                weaks.add(w + n);
+            }
+
+            Permutation p = new Permutation(dist.length, dist.length);
+            p.permutation(dist, visited, 0);
+
+            List<List<Integer>> results = p.results;
+
+            for (int start = 0; start < weak.length; start++) {
+                // 친구들 뽑는 순서대로 배치
+                for (List<Integer> friends : results) {
+
+                    int cnt = 1;
+                    int end = weaks.get(start) + friends.get(cnt - 1);
+
+                    for (int i = start; i < start + weak.length; i++) {
+                        if (end < weaks.get(i)) {
+                            cnt++;
+
+                            if (cnt > dist.length) {
+                                break;
+                            }
+
+                            end = weaks.get(i) + friends.get(cnt - 1);
+                        }
+                    }
+
+                    answer = Math.min(answer, cnt);
+                }
+            }
+
+            if (answer > dist.length) {
+                answer = -1;
+            }
+
+            return answer;
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 12;
+        int[][] weak = {
+                {1, 5, 6, 10},
+                {1, 3, 4, 9, 10}
+        };
+        int[][] dist = {
+                {1, 2, 3, 4},
+                {3, 5, 7}
+        };
+
+        Solution solution = new Solution();
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println(solution.solution(n, weak[i], dist[i]));
+        }
+    }
+
+    /*static class Permutation{
 
         private int n;
         private int r;
@@ -126,5 +231,5 @@ public class Ex8 {
 
         System.out.println(solution(n, weak2, dist2));
         System.out.println(solution(n, weak, dist));
-    }
+    }*/
 }
