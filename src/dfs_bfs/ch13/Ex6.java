@@ -26,6 +26,12 @@ T T T X
 출력
 NO
  */
+
+/**
+ * https://www.acmicpc.net/problem/18428
+ * 
+ * 감시 피하기
+ */
 public class Ex6 {
 
     static class Point{
