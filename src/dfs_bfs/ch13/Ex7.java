@@ -44,6 +44,12 @@ import java.util.StringTokenizer;
 3
 ==========
  */
+
+/**
+ * https://www.acmicpc.net/problem/16234
+ * 
+ * 인구 이동
+ */
 public class Ex7 {
 
     static class Point {
