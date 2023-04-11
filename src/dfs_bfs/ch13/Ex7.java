@@ -49,6 +49,8 @@ import java.util.StringTokenizer;
  * https://www.acmicpc.net/problem/16234
  * 
  * 인구 이동
+ *
+ * TODO 다시풀기:2
  */
 public class Ex7 {
 
