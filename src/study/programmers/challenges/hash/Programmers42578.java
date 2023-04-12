@@ -1,4 +1,4 @@
-package study.programmers.challenges;
+package study.programmers.challenges.hash;
 
 import java.util.*;
 
