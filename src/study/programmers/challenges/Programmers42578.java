@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges;
 
 import java.util.*;
 
@@ -29,6 +29,8 @@ public class Programmers42578 {
             answer *= value + 1;
         }*/
 
+        // 각 종류의 옷 가지수 + 1 의 경우의 수로 정렬
+        // 여기서 + 1은 해당 종류의 옷 안 입는 경우
         Iterator<Integer> it = map.values().iterator();
         while (it.hasNext()) {
             answer *= it.next() + 1;

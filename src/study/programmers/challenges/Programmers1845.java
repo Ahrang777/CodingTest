@@ -1,7 +1,8 @@
-package study.programmers;
+package study.programmers.challenges;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * https://school.programmers.co.kr/learn/courses/30/lessons/1845
@@ -11,7 +12,24 @@ import java.util.*;
 public class Programmers1845 {
 
     public static int solution(int[] nums) {
+        return Arrays.stream(nums).boxed()
+            .collect(Collectors.collectingAndThen(Collectors.toSet(),
+                phonekemons -> Integer.min(phonekemons.size(), nums.length / 2)));
+
+        /*int answer = 0;
+
         int max = nums.length / 2;
+
+        Set<Integer> set = new HashSet<>();
+        Arrays.stream(nums).forEach(num -> set.add(num));
+
+        max = Math.min(set.size(), max);
+
+        answer = max;
+        return answer;*/
+
+
+        /*int max = nums.length / 2;
 
         // 중복 제거
         Set<Integer> set = new HashSet<>();
@@ -23,7 +41,7 @@ public class Programmers1845 {
             max = set.size();
         }
 
-        return max;
+        return max;*/
     }
 
     public static void main(String[] args) {

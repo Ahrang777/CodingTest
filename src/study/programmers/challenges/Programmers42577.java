@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges;
 
 import java.util.*;
 
@@ -30,7 +30,31 @@ public class Programmers42577 {
 
     // 풀이 2
     public static boolean solution(String[] phone_book) {
-        Map<String, Integer> map = new HashMap<>();
+        /*
+        Set<String> set = Arrays.stream(phone_book).collect(Collectors.toSet());
+        for (String phone : set) {
+            for (int i = 1; i < phone.length(); i++) {
+                if (set.contains(phone.substring(0, i))) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+        */
+
+        Arrays.sort(phone_book);
+        boolean result = true;
+        for (int i=0; i<phone_book.length-1; i++) {
+            if (phone_book[i+1].startsWith(phone_book[i])) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+
+
+        /*Map<String, Integer> map = new HashMap<>();
 
         // 모든 전화번호를 HashMap에 넣는다.
         for (int i = 0; i < phone_book.length; i++) {
@@ -46,7 +70,7 @@ public class Programmers42577 {
             }
         }
 
-        return true;
+        return true;*/
     }
 
     public static void main(String[] args) {

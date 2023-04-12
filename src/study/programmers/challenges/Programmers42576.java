@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges;
 
 import java.util.*;
 
@@ -8,9 +8,36 @@ import java.util.*;
  * 완주하지 못한 선수
  */
 public class Programmers42576 {
-
     public static String solution(String[] participant, String[] completion) {
         String answer = "";
+        Map<String, Integer> map = new HashMap<>();
+        Arrays.stream(participant).forEach(name -> map.put(name, map.getOrDefault(name, 0) + 1));
+        Arrays.stream(completion).forEach(name -> map.put(name, map.get(name) - 1));
+
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() != 0) {
+                answer = entry.getKey();
+                break;
+            }
+        }
+
+        return answer;
+
+        /*String answer = "";
+        Map<String, Integer> map = new HashMap<>();
+        Arrays.stream(participant).forEach(name -> map.put(name, map.getOrDefault(name, 0) + 1));
+        Arrays.stream(completion).forEach(name -> map.put(name, map.get(name) - 1));
+
+        for (String name : map.keySet()) {
+            if (map.get(name) != 0) {
+                answer = name;
+                break;
+            }
+        }
+
+        return answer;*/
+
+        /*String answer = "";
 
         HashMap<String, Integer> map = new HashMap<>();
 
@@ -25,7 +52,7 @@ public class Programmers42576 {
             }
         }
 
-        return answer;
+        return answer;*/
     }
 
     public static void main(String[] args) {
