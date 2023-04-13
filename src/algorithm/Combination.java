@@ -152,6 +152,8 @@ public class Combination {
     
     //visited 없이 index로 해결
     //arr자체는 빈 배열
+    // index는 arr의 순서를 나타냄
+    // target이 넣는 값으로 0 ~ n-1 로 점차 증가
     //0 ~ n-1 숫자조합
     //target 을 늘려가며 target을 넣는것
     //index는 빈 arr에 조합으로 선택된 숫자를 넣을때만 +1, 즉 index가 뽑은 갯수가 된다.
