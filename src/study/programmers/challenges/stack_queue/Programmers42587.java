@@ -1,6 +1,8 @@
-package study.programmers;
+package study.programmers.challenges.stack_queue;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * https://school.programmers.co.kr/learn/courses/30/lessons/42587

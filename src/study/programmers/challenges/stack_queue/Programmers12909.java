@@ -1,5 +1,10 @@
-package study.programmers;
+package study.programmers.challenges.stack_queue;
 
+/**
+ * https://school.programmers.co.kr/learn/courses/30/lessons/12909
+ *
+ * 올바른 괄호
+ */
 public class Programmers12909 {
 
     /*boolean solution(String s) {
