@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.stack_queue;
 
 import java.util.ArrayList;
 
