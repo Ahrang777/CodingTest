@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.heap;
 
 import java.util.*;
 
@@ -8,6 +8,50 @@ import java.util.*;
  * 이중우선순위큐
  */
 public class Programmers42628 {
+    /*
+    public int[] solution(String[] operations) {
+        int[] answer = new int[2];
+
+		PriorityQueue<Integer> minQ = new PriorityQueue<>();
+		PriorityQueue<Integer> maxQ = new PriorityQueue<>(Collections.reverseOrder());
+
+		for (String operation : operations) {
+			String[] arr = operation.split(" ");
+			int n = Integer.parseInt(arr[1]);
+
+			if (arr[0].equals("I")) {
+				maxQ.offer(n);
+				minQ.offer(n);
+				continue;
+			}
+
+			if (maxQ.isEmpty() && minQ.isEmpty()) {
+				continue;
+			}
+
+			if (n == 1) {
+				Integer max = maxQ.poll();
+				minQ.remove(max);
+				continue;
+			}
+
+			if (n == -1) {
+				Integer min = minQ.poll();
+				maxQ.remove(min);
+			}
+		}
+
+		if (maxQ.isEmpty() && minQ.isEmpty()) {
+			answer[0] = 0;
+			answer[1] = 0;
+		} else {
+			answer[0] = maxQ.poll();
+			answer[1] = minQ.poll();
+		}
+
+		return answer;
+    }
+     */
 
     public static int[] solution(String[] operations) {
         int[] answer = new int[2];
