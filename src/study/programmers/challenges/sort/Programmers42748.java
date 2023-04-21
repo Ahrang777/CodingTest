@@ -1,6 +1,7 @@
-package study.programmers;
+package study.programmers.challenges.sort;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * https://school.programmers.co.kr/learn/courses/30/lessons/42748
@@ -17,6 +18,7 @@ public class Programmers42748 {
             Arrays.sort(tmp);
             answer[i] = tmp[commands[i][2] - 1];
         }
+        return answer;
 
         /*for (int a = 0; a < commands.length; a++){
             int[] command = commands[a];
@@ -32,9 +34,11 @@ public class Programmers42748 {
 
             Collections.sort(arr);
             answer[a] = arr.get(k - 1);
+
+            return answer;
+
         }*/
 
-        return answer;
     }
 
     public static void main(String[] args) {

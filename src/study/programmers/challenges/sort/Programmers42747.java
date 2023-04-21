@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.sort;
 
 import java.util.*;
 
@@ -6,6 +6,7 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42747
  *
  * H-Index
+ * 이해안됨...
  */
 public class Programmers42747 {
 

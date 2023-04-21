@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.sort;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42746
  *
  * 가장 큰 수
- * 다시풀기
  */
 public class Programmers42746 {
 
@@ -35,10 +34,10 @@ public class Programmers42746 {
 
         // "0000" or "0" 이런식인 경우
         if (answer.charAt(0) == '0') {
-            return "0";
-        } else {
-            return answer;
+            answer = "0";
         }
+
+        return answer;
 
         /*String[] arr = new String[numbers.length];
 
