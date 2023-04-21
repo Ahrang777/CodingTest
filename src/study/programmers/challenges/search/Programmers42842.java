@@ -1,6 +1,45 @@
-package study.programmers;
+package study.programmers.challenges.search;
 
+/**
+ * https://school.programmers.co.kr/learn/courses/30/lessons/42842
+ *
+ * 카펫
+ */
 public class Programmers42842 {
+    /*
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
+        List<Integer> divisors = divisor(yellow);
+
+        for (int i = 0; i < divisors.size(); i += 2) {
+            int n1 = divisors.get(i);
+            int n2 = divisors.get(i + 1);
+
+            if ((n1 + n2 + 2) == brown / 2) {
+                answer[0] = Math.max(n1, n2) + 2;
+                answer[1] = Math.min(n1, n2) + 2;
+                break;
+            }
+        }
+
+        return answer;
+    }
+
+    // 약수 구하기 >> 4의 경우 2 하나만 있는게 아니라 가로세로 모두 필요하니까 2, 2 두번 들어가게
+    private List<Integer> divisor(int n) {
+        List<Integer> divisors = new ArrayList<>();
+        int sqrt = (int) Math.sqrt(n);
+
+        for (int i = 1; i <= sqrt; i++) {
+            if (n % i == 0) {
+                divisors.add(i);
+                divisors.add(n / i);
+            }
+        }
+
+        return divisors;
+    }
+     */
 
     public static int[] solution(int brown, int yellow) {
         int[] answer = new int[2];

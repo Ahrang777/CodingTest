@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.search;
 
 import java.util.*;
 
@@ -6,9 +6,36 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/84512
  *
  * 모음사전
- * 다시풀기
  */
 public class Programmers84512 {
+    static char[] arr = {'A', 'E', 'I', 'O', 'U'};
+    static List<String> list = new ArrayList<>();
+
+    public static int solution(String word) {
+        int answer = 0;
+        for (int i = 1; i <= 5; i++) {
+            dfs(new StringBuilder(), i);
+        }
+
+        Collections.sort(list);
+
+        answer = list.indexOf(word) + 1;
+
+        return answer;
+    }
+
+    private static void dfs(StringBuilder sb, int len) {
+        if (sb.length() == len) {
+            list.add(sb.toString());
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+            dfs(sb, len);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
 
     /*public static int solution(String word) {
         String str = "AEIOU";
@@ -37,20 +64,20 @@ public class Programmers84512 {
         return answer;
     }*/
 
-    public static List<String> list = new ArrayList<>();
-
-    public static void dfs(String str, int len) {
-        if (len > 5) return;
-        list.add(str);
-        for (int i = 0; i < 5; i++) {
-            dfs(str + "AEIOU".charAt(i), len + 1);
-        }
-    }
-
-    public static int solution(String word) {
-        dfs("", 0);
-        return list.indexOf(word);
-    }
+    // public static List<String> list = new ArrayList<>();
+    //
+    // public static void dfs(String str, int len) {
+    //     if (len > 5) return;
+    //     list.add(str);
+    //     for (int i = 0; i < 5; i++) {
+    //         dfs(str + "AEIOU".charAt(i), len + 1);
+    //     }
+    // }
+    //
+    // public static int solution(String word) {
+    //     dfs("", 0);
+    //     return list.indexOf(word);
+    // }
 
 
 

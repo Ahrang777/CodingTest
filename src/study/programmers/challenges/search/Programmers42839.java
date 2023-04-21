@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.search;
 
 import java.util.*;
 
@@ -6,9 +6,69 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42839
  *
  * 소수 찾기
- * 다시 풀기
  */
 public class Programmers42839 {
+    /*
+    boolean[] check = new boolean[7];
+
+    public int solution(String numbers) {
+        int answer = 0;
+
+        Set<Integer> set = new HashSet<>();
+        // permutation("", numbers, set);
+        for (int i = 1; i <= numbers.length(); i++) {
+            perm(numbers, "", i, set);
+        }
+
+        for (int n : set) {
+            if (isPrime(n)) {
+                answer++;
+            }
+        }
+
+        return answer;
+    }
+
+    public void perm(String numbers, String str, int len, Set<Integer> set) {
+        if (str.length() == len) {
+            set.add(Integer.parseInt(str));
+            return;
+        }
+
+        for (int i = 0; i < numbers.length(); i++) {
+            if (!check[i]) {
+                check[i] = true;
+                str += numbers.charAt(i);
+
+                perm(numbers, str, len, set);
+
+                check[i] = false;
+                str = str.substring(0, str.length() - 1);
+            }
+        }
+    }
+
+    private void permutation(String prefix, String numbers, Set<Integer> set) {
+        if (!prefix.equals("")) set.add(Integer.parseInt(prefix));
+
+        for (int i = 0; i < numbers.length(); i++) {
+            permutation(prefix + numbers.charAt(i), numbers.substring(0, i) + numbers.substring(i + 1), set);
+        }
+    }
+
+    private boolean isPrime(int n) {
+        if (n == 0 || n == 1) return false;
+        int limit = (int)Math.sqrt(n);
+        for (int i = 2; i <= limit; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+     */
+
 
     // 아래와 비슷하지만 처음부터 짝수는 걸러서 반복을 줄인다.
     /*public static int solution(String numbers) {
@@ -40,11 +100,17 @@ public class Programmers42839 {
 
         permutation("", numbers, set);
 
-        Iterator<Integer> it = set.iterator();
+        /*Iterator<Integer> it = set.iterator();
         while (it.hasNext()) {
             int num = it.next();
 
             if (isPrime(num)) {
+                answer++;
+            }
+        }*/
+
+        for (Integer n : set) {
+            if (isPrime(n)) {
                 answer++;
             }
         }
@@ -52,12 +118,32 @@ public class Programmers42839 {
         return answer;
     }
 
+    boolean[] check = new boolean[7];
+
+    public void perm(String numbers, String str, int len, Set<Integer> set) {
+        if (str.length() == len) {
+            set.add(Integer.parseInt(str));
+            return;
+        }
+
+        for (int i = 0; i < numbers.length(); i++) {
+            if (!check[i]) {
+                check[i] = true;
+                str += numbers.charAt(i);
+
+                perm(numbers, str, len, set);
+
+                check[i] = false;
+                str = str.substring(0, str.length() - 1);
+            }
+        }
+    }
+
     public static void permutation(String prefix, String str, Set<Integer> set) {
-        int n = str.length();
         if (!prefix.equals("")) set.add(Integer.parseInt(prefix));
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < str.length(); i++) {
             // str에서 i 번째를 뽑았으니까 제거해서 방문처리한다고 생각
-            permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1, n), set);
+            permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i + 1), set);
         }
     }
 

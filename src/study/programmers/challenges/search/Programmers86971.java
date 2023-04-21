@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.search;
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ public class Programmers86971 {
     }
      */
 
-    public static int[][] graph;
+    static int[][] graph;
 
     public static int solution(int n, int[][] wires) {
         int answer = Integer.MAX_VALUE;
@@ -52,34 +52,34 @@ public class Programmers86971 {
         }
 
         for (int[] wire : wires) {
-            int a = wire[0];
-            int b = wire[1];
+            int v1 = wire[0];
+            int v2 = wire[1];
 
-            graph[a][b] = 0;
-            graph[b][a] = 0;
+            graph[v1][v2] = 0;
+            graph[v2][v1] = 0;
 
-            answer = Math.min(answer, bfs(n, b));
+            answer = Math.min(answer, bfs(n, v1));
 
-            graph[a][b] = 1;
-            graph[b][a] = 1;
+            graph[v1][v2] = 1;
+            graph[v2][v1] = 1;
         }
 
         return answer;
     }
 
-    public static int bfs(int n, int start) {
+    private static int bfs(int n, int start) {
         boolean[] visited = new boolean[n+1];
         Queue<Integer> q = new LinkedList<>();
         q.offer(start);
         visited[start] = true;
-        int cnt = 1;
+        int cnt = 0;
 
         while (!q.isEmpty()) {
             int now = q.poll();
+            cnt++;
 
             for (int i = 1; i <= n; i++){
                 if (!visited[i] && graph[now][i] == 1){
-                    cnt++;
                     q.offer(i);
                     visited[i] = true;
                 }
