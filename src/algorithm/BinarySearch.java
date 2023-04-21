@@ -56,7 +56,10 @@ public class BinarySearch {
     public static int lowerBound(int[] arr, int target, int start, int end) {
         while (start < end) {
             int mid = (start + end) / 2;
-            if(arr[mid] >= target) end = mid;   //target 과 같은 것 중 가장 왼쪽 값 찾기 >> 따라서 target이랑 같을때 왼쪽으로 이동하기 위해 end = mid
+
+            // target 과 같은 것 중 가장 왼쪽 값 찾기 >> 따라서 target이랑 같을때 왼쪽으로 이동하기 위해 end = mid
+            // 만약 target과 같고 현재 mid 위치가 값이 target인 값들 중 가장 왼쪽인데 end = mid - 1; 이 되버리면 문제?
+            if(arr[mid] >= target) end = mid;
             else start = mid + 1;
         }
         return end;
@@ -66,7 +69,10 @@ public class BinarySearch {
     public static int upperBound(int[] arr, int target, int start, int end) {
         while (start < end) {
             int mid = (start + end) / 2;
-            if (arr[mid] > target) end = mid;   //target 과 같은 것 중 가장 오른쪽 값 찾기 >> 따라서 target이랑 같을때 오른쪽으로 이동하기 위해 start = mid + 1
+
+            // target 과 같은 것 중 가장 오른쪽 값 찾기 >> 따라서 target이랑 같을때 오른쪽으로 이동하기 위해 start = mid + 1
+            // target의 범위 마지막 + 1 이기때문에 end = mid - 1 안하고 딱 그위치까지?
+            if (arr[mid] > target) end = mid;
             else start = mid + 1;
         }
         return end;
@@ -81,30 +87,38 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
+//         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+//         StringTokenizer stk = new StringTokenizer(bf.readLine(), " ");
+//
+//         int n = Integer.parseInt(stk.nextToken());  //원소 개수
+//         int target = Integer.parseInt(stk.nextToken()); //찾고자 하는 값
+//
+//         int[] arr = new int[n];
+//         stk = new StringTokenizer(bf.readLine(), " ");
+//         for (int i = 0; i < n; i++) {
+//             arr[i] = Integer.parseInt(stk.nextToken());
+//         }
+//
+//         Arrays.sort(arr);
+//         /*for (int i : arr) {
+//             System.out.print(i + " ");
+//         }
+//         System.out.println();*/
+//
+// //        int result = binarySearch(arr, target, 0, n - 1);
+//         int result = binarySearch1(arr, target, 0, n - 1);
+//         if (result == -1) {
+//             System.out.println("원소가 존재하지 않습니다.");
+//         } else{
+//             System.out.println(result + 1);
+//         }
 
-        int n = Integer.parseInt(stk.nextToken());  //원소 개수
-        int target = Integer.parseInt(stk.nextToken()); //찾고자 하는 값
-
-        int[] arr = new int[n];
-        stk = new StringTokenizer(bf.readLine(), " ");
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(stk.nextToken());
+        int[] numbers = {1, 5, 2, 2, 4, 7, 7, 6, 6, 6, 6, 9, 9, 8};
+        Arrays.sort(numbers);
+        for (int number : numbers) {
+            System.out.print(number + " ");
         }
-
-        Arrays.sort(arr);
-        /*for (int i : arr) {
-            System.out.print(i + " ");
-        }
-        System.out.println();*/
-
-//        int result = binarySearch(arr, target, 0, n - 1);
-        int result = binarySearch1(arr, target, 0, n - 1);
-        if (result == -1) {
-            System.out.println("원소가 존재하지 않습니다.");
-        } else{
-            System.out.println(result + 1);
-        }
+        System.out.println();
+        System.out.println(countByRange(numbers, 6, 9));
     }
 }
