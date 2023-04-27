@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.greedy;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42860
  *
  * 조이스틱
- * 다시풀기
  * 참고: https://born2bedeveloper.tistory.com/26
  */
 public class Programmers42860 {

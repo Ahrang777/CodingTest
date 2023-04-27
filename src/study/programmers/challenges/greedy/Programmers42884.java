@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.greedy;
 
 import java.util.Arrays;
 
@@ -6,7 +6,6 @@ import java.util.Arrays;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42884
  *
  * 단속카메라
- * 다시풀기
  */
 public class Programmers42884 {
 

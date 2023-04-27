@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.greedy;
 
 import java.util.*;
 

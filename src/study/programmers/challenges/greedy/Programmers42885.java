@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.greedy;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42885
  *
  * 구명보트
- * 다시풀기
  */
 public class Programmers42885 {
 

@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.greedy;
 
 import java.util.Stack;
 
@@ -6,7 +6,6 @@ import java.util.Stack;
  * https://school.programmers.co.kr/learn/courses/30/lessons/42883
  * 
  * 큰 수 만들기
- * 디시풀기
  */
 public class Programmers42883 {
 
