@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.dfs_bfs;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/87694
  *
  * 아이템 줍기
- * 다시풀기
  * 참고: https://loosie.tistory.com/544
  */
 public class Programmers87694 {
@@ -22,7 +21,7 @@ public class Programmers87694 {
         }
     }
 
-    static List<Rectangle> list = new ArrayList<>();
+    static List<Rectangle> rectangles = new ArrayList<>();
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, -1, 0, 1};
 
@@ -45,7 +44,7 @@ public class Programmers87694 {
     public int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
         int answer = 0;
 
-        int[][] map = new int[102][102];
+        int[][] map = new int[102][102];    // 1 ~ 50까지 위해서 51 >> 2배 하면 102
 
         for (int[] r : rectangle) {
             int sx = r[0] * 2;
@@ -53,7 +52,7 @@ public class Programmers87694 {
             int ex = r[2] * 2;
             int ey = r[3] * 2;
 
-            list.add(new Rectangle(sx, sy, ex, ey));
+            rectangles.add(new Rectangle(sx, sy, ex, ey));
 
             for (int i = sy; i <= ey; i++) {
                 for (int j = sx; j <= ex; j++) {
@@ -99,7 +98,7 @@ public class Programmers87694 {
 
     // 모든 사각형들에 대해서 하나의 사각형이라도 내부에 존재하게 되면 해당 좌표는 경계가 아님
     public boolean isBoundary(int x, int y) {
-        for (Rectangle r : list) {
+        for (Rectangle r : rectangles) {
             if (r.x1 < x && x < r.x2 && r.y1 < y && y < r.y2)   return false;
         }
 

@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.dfs_bfs;
 
 import java.util.*;
 
@@ -6,11 +6,57 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/43163
  *
  * 단어 변환
- * 다시풀기
  */
 public class Programmers43163 {
 
     static class Word {
+        String word;
+        int cnt;
+
+        public Word(String word, int cnt) {
+            this.word = word;
+            this.cnt = cnt;
+        }
+    }
+    public static int solution(String begin, String target, String[] words) {
+        boolean[] check = new boolean[words.length];
+        int answer = bfs(begin, target, words, check);
+
+        return answer;
+    }
+
+    private static int bfs(String begin, String target, String[] words, boolean[] check) {
+        Queue<Word> q = new LinkedList<>();
+        q.offer(new Word(begin, 0));
+
+        while(!q.isEmpty()) {
+            Word now = q.poll();
+
+            if (target.equals(now.word))    return now.cnt;
+
+            for (int i = 0; i < words.length; i++) {
+                if (!check[i] && isNext(now.word, words[i])) {
+                    q.offer(new Word(words[i], now.cnt + 1));
+                    check[i] = true;
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    private static boolean isNext(String now, String next) {
+        int cnt = 0;    // 현재 문자열과 다음 문자열의 다른 글자수
+        for (int i = 0; i < now.length(); i++) {
+            if (now.charAt(i) != next.charAt(i)) {
+                cnt++;
+            }
+        }
+
+        return cnt == 1;
+    }
+
+    /*static class Word {
         String word;
         int step;
 
@@ -60,7 +106,7 @@ public class Programmers43163 {
         }
 
         return ((cnt == begin.length() - 1) ? true : false);
-    }
+    }*/
 
     /*
     static boolean[] visited;

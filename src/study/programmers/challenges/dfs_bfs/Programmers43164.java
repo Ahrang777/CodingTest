@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers.challenges.dfs_bfs;
 
 import java.util.*;
 
@@ -6,11 +6,37 @@ import java.util.*;
  * https://school.programmers.co.kr/learn/courses/30/lessons/43164
  *
  * 여행경로
- * 다시풀기
  */
 public class Programmers43164 {
+    static final String SEP = " ";
+    static List<String> result = new ArrayList<>();
 
-    static boolean[] visited;
+    public static String[] solution(String[][] tickets) {
+        String[] answer = {};
+
+        boolean[] visited = new boolean[tickets.length];
+        dfs("ICN", "ICN", tickets, visited, 0);
+        Collections.sort(result);
+        answer = result.get(0).split(SEP);
+        return answer;
+    }
+
+    private static void dfs(String start, String route, String[][] tickets, boolean[] visited, int cnt) {
+        if (cnt == tickets.length) {
+            result.add(route);
+            return;
+        }
+
+        for (int i = 0; i < tickets.length; i++) {
+            if (!visited[i] && start.equals(tickets[i][0])) {
+                visited[i] = true;
+                dfs(tickets[i][1], route + SEP + tickets[i][1], tickets, visited, cnt + 1);
+                visited[i] = false;
+            }
+        }
+    }
+
+    /*static boolean[] visited;
     static List<String> routes = new ArrayList<>();
 
     public static String[] solution(String[][] tickets) {
@@ -40,7 +66,7 @@ public class Programmers43164 {
                 visited[i] = false;
             }
         }
-    }
+    }*/
 
     public static void main(String[] args) {
         String[][][] tickets = {
