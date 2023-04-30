@@ -38,6 +38,88 @@ import java.util.StringTokenizer;
  * 한 지점에서 다른 지점들로의 최단 경로
  */
 public class Dijkstra {
+    /*
+    static class Node implements Comparable<Node> {
+		int index, dist;
+
+		public Node(int index, int dist) {
+			this.index = index;
+			this.dist = dist;
+		}
+
+		@Override
+		public int compareTo(Node o) {
+			return this.dist - o.dist;
+		}
+	}
+
+	static int n, m, start;
+	static int[] d;
+	static List<Node>[] graph;
+	static boolean[] visited;
+	static final int INF = Integer.MAX_VALUE;
+
+	private static void dijkstra(int start) {
+		PriorityQueue<Node> pq = new PriorityQueue<>();
+		pq.offer(new Node(start, 0));
+		d[start] = 0;
+
+		while (!pq.isEmpty()) {
+			Node node = pq.poll();
+			int now = node.index;
+
+			if (visited[now])	continue;
+
+			visited[now] = true;
+			for (Node next : graph[now]) {
+				int cost = d[now] + next.dist;
+				if (cost < d[next.index]) {
+					pq.offer(new Node(next.index, cost));
+					d[next.index] = cost;
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		n = Integer.parseInt(st.nextToken());
+		m = Integer.parseInt(st.nextToken());
+
+		start = Integer.parseInt(br.readLine());
+
+		d = new int[n + 1];
+		visited = new boolean[n + 1];
+		graph = new List[n + 1];
+
+		for (int i = 0; i <= n; i++) {
+			graph[i] = new ArrayList<>();
+		}
+
+		for (int i = 0; i < m; i++) {
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
+
+			graph[a].add(new Node(b, c));
+		}
+
+		Arrays.fill(d, INF);
+
+		dijkstra(start);
+
+		for (int i = 1; i <= n; i++) {
+			if (d[i] == INF) {
+				System.out.println("INFINITY");
+			} else {
+				System.out.println(d[i]);
+			}
+		}
+	}
+     */
 
     public static int n, m, start;
     public static ArrayList<Node>[] graph;
