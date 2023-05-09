@@ -52,6 +52,68 @@ public class BinarySearch {
         return -1;
     }
 
+
+
+
+    // key이상인 값의 처음 위치 
+    // 따라서 key <= arr[mid] 의 경우 arr[mid]가 key와 같을 수도 클 수도 있으니까 hi 를 mid 자리까지만 가야한다. 
+    // hi = mid - 1 가 아니라 hi = mid 왜나하면 그 자리가 가장 앞일 수 있다. 
+    // key > arr[mid] 인 경우 고려할 필요없이 lo = mid + 1 >> key 이상인 첫 위치를 구해야 하므로
+    private static int lowerBound(int[] arr, int key) {
+        int lo = 0;
+        int hi = arr.length;
+
+        // lo가 hi랑 같아질 때 까지 반복
+        while (lo < hi) {
+
+            int mid = (lo + hi) / 2; // 중간위치를 구한다.
+
+            /*
+             *  key 값이 중간 위치의 값보다 작거나 같을 경우
+             *
+             *  (중복 원소에 대해 왼쪽으로 탐색하도록 상계를 내린다.)
+             */
+            if (key <= arr[mid]) {
+                hi = mid;
+            }
+
+            else {
+                lo = mid + 1;
+            }
+
+        }
+        return lo;
+    }
+
+    // key 를 초과하는 처음 위치
+    // arr[mid]가 key 를 초과해야 하므로 arr[mid] <= key 인 경우는 lo = mid + 1
+    // key < arr[mid] 인 경우 현재 위치가 답일 수 있으니 hi = mid로 이동한다. (hi = mid - 1 아님)
+    private static int upperBound(int[] arr, int key) {
+        int lo = 0;
+        int hi = arr.length;
+
+        // lo가 hi랑 같아질 때 까지 반복
+        while (lo < hi) {
+
+            int mid = (lo + hi) / 2; // 중간위치를 구한다.
+
+            // key값이 중간 위치의 값보다 작을 경우
+            if (key < arr[mid]) {
+                hi = mid;
+            }
+            // 중복원소의 경우 else에서 처리된다.
+            else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
+    }
+
+
+
+
+
+
     //target의 범위의 첫번째 위치
     public static int lowerBound(int[] arr, int target, int start, int end) {
         while (start < end) {
