@@ -1,4 +1,4 @@
-package study.baekjoon;
+package study.baekjoon.implementation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -79,8 +79,6 @@ import java.util.StringTokenizer;
  *
  * 아기 상어
  * 삼성전자 공채
- *
- * 다시 풀기
  */
 public class Baekjoon16236 {
 
