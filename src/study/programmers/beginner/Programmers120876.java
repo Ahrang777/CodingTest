@@ -7,10 +7,10 @@ package study.programmers.beginner;
 public class Programmers120876 {
 	/*public int solution(int[][] lines) {
 		int answer = 0;
-		int[] arr = new int[201];
+		int[] arr = new int[201];	// 0 <= <= 200
 
 		for (int[] line : lines) {
-			int start = line[0] + 100;
+			int start = line[0] + 100;	// -100 부터가 아닌 0부터 시작되게 + 100 처리
 			int end = line[1] + 100;
 
 			while(start < end) {
