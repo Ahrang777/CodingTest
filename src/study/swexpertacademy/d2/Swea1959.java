@@ -11,17 +11,17 @@ import java.util.*;
 public class Swea1959 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        int T = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st = null;
 
-        for (int tc = 1; tc <= T; tc++) {
+        int T = Integer.parseInt(br.readLine());
+        for (int t = 1; t <= T; t++) {
             st = new StringTokenizer(br.readLine());
             int N = Integer.parseInt(st.nextToken());
             int M = Integer.parseInt(st.nextToken());
 
             int[] A = new int[N];
             int[] B = new int[M];
-            int maxValue = Integer.MIN_VALUE;
 
             st = new StringTokenizer(br.readLine());
             for (int i = 0; i < N; i++) {
@@ -33,27 +33,27 @@ public class Swea1959 {
                 B[i] = Integer.parseInt(st.nextToken());
             }
 
-            if ( N >= M) {
+            int max = Integer.MIN_VALUE;
+            if (N >= M) {
                 for (int i = 0; i <= N - M; i++) {
-                    int sum = 0;
+                    int total = 0;
                     for (int j = 0; j < M; j++) {
-                        sum += (A[i + j] * B[j]);
+                        total += A[i + j] * B[j];
                     }
-                    maxValue = Math.max(maxValue, sum);
+                    max = Math.max(max, total);
                 }
-
             } else {
                 for (int i = 0; i <= M - N; i++) {
-                    int sum = 0;
+                    int total = 0;
                     for (int j = 0; j < N; j++) {
-                        sum += (A[j] * B[i + j]);
+                        total += A[j] * B[i + j];
                     }
-                    maxValue = Math.max(maxValue, sum);
+                    max = Math.max(max, total);
                 }
-
             }
 
-            System.out.printf("#%d %d\n", tc, maxValue);
+            sb.append("#").append(t + " ").append(max + "\n");
         }
+        System.out.println(sb);
     }
 }
