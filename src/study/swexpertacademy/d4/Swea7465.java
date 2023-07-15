@@ -9,6 +9,8 @@ import java.util.*;
  */
 public class Swea7465 {
 	static int[] parents;
+	static boolean[] visited;
+
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
@@ -33,12 +35,23 @@ public class Swea7465 {
 				union(a, b);
 			}
 
-			Set<Integer> set = new HashSet<>();
+			//            int result = 0;
+			//            Set<Integer> set = new HashSet<>();
+			//            for (int i = 1; i <= N; i++) {
+			//                set.add(findRoot(i));
+			//            }
+			//            result = set.size();
+
+			int result = 0;
 			for (int i = 1; i <= N; i++) {
-				set.add(findRoot(i));
+				int x = findRoot(i);
+				if (!visited[x]) {
+					visited[x] = true;
+					result++;
+				}
 			}
 
-			sb.append("#").append(tc + " ").append(set.size() + "\n");
+			sb.append("#").append(tc).append(" ").append(result).append("\n");
 		}
 
 		System.out.println(sb);
