@@ -3,6 +3,10 @@ package study.programmers.lv2;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * https://school.programmers.co.kr/learn/courses/30/lessons/17680
+ * [1차] 캐시
+ */
 public class Programmers17680 {
 	public int solution(int cacheSize, String[] cities) {
 		int answer = 0;
